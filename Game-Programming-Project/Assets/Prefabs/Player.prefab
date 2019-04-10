@@ -176,7 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 35
   smoothing: 0.05
-  jumpPower: 300
+  jumpVector: {x: 0, y: 100}
+  jumpTime: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
