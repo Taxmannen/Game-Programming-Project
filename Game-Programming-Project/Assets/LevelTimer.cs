@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class LevelTimer : MonoBehaviour
 {
+    [Header("Timer")]
     public float timer;
+
+    [Header("Setup")]
     public TextMeshProUGUI textField;
     public Collider2D goalTrigger;
 
@@ -24,7 +27,6 @@ public class LevelTimer : MonoBehaviour
                 goalTrigger.enabled = false;
                 triggered = true;
             }
-      
         }
     }
 }
