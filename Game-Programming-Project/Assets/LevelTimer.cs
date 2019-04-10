@@ -13,5 +13,9 @@ public class LevelTimer : MonoBehaviour
             timer -= Time.deltaTime;
             textField.text = "" + (int)timer;
         }
+        else
+        {
+            Debug.Log("You Lost!");
+        }
     }
 }

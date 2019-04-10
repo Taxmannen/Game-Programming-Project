@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        x = Input.GetAxis("Horizontal") * movementSpeed;
-        if (Input.GetButtonDown("Jump") && grounded) jump = true;
+        x = Input.GetAxis("Horizontal" + " " + gameObject.name) * movementSpeed;
+        if (Input.GetButtonDown("Jump" + " " + gameObject.name) && grounded) jump = true;
 
         grounded = Physics2D.OverlapBox(transform.position, new Vector3(0.8f, 0.1f, 0), 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
