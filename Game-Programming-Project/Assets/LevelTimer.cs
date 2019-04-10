@@ -5,6 +5,9 @@ public class LevelTimer : MonoBehaviour
 {
     public float timer;
     public TextMeshProUGUI textField;
+    public Collider2D goalTrigger;
+
+    private bool triggered;
 
     void Update()
     {
@@ -15,7 +18,13 @@ public class LevelTimer : MonoBehaviour
         }
         else
         {
-            Debug.Log("You Lost!");
+            if (!triggered)
+            {
+                Debug.Log("You Lost!");
+                goalTrigger.enabled = false;
+                triggered = true;
+            }
+      
         }
     }
 }

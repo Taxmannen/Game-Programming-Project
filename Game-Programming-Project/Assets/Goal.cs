@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    private bool triggered;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !triggered)
         {
-            Time.timeScale = 0;
             Debug.Log("WINNER :" + " " + other.gameObject.name);
+            triggered = true;
         }
     }
 }
