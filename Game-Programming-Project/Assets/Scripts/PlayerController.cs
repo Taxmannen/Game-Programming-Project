@@ -47,6 +47,13 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsJumping", !grounded);
 
         if (!doubleJump && grounded) doubleJump = true;
+
+   
+        if (Input.GetButtonDown("Attack" + " " + gameObject.name))
+        {
+            anim.SetTrigger("Attack");
+        }
+        
     }
 
     private void FixedUpdate()
@@ -74,6 +81,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
+
+  
 
     IEnumerator JumpRoutine()
     {
