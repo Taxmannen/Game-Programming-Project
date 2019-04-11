@@ -41,10 +41,11 @@ public class PlayerController : MonoBehaviour
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
         if (Input.GetButtonDown("Jump" + " " + gameObject.name))
         {
-            if (grounded || doubleJump) StartCoroutine(JumpRoutine());
+            if (grounded) StartCoroutine(JumpRoutine(false));
+            else if (doubleJump) StartCoroutine(JumpRoutine(true));
         }
 
-        grounded = Physics2D.OverlapBox(transform.position, new Vector3(0.8f, 0.1f, 0), 0, groundLayer);
+        grounded = Physics2D.OverlapBox(transform.position, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
 
         if (!doubleJump && grounded) doubleJump = true;
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
   
 
-    IEnumerator JumpRoutine()
+    IEnumerator JumpRoutine(bool isDoubleJump)
     {
         rb.velocity = Vector2.zero;
         float timer = 0;
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+
+        if (isDoubleJump) doubleJump = false;
     }
 
     private bool Flip()
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, new Vector3(0.8f, 0.1f, 0));
+        Gizmos.DrawCube(transform.position, new Vector3(0.55f, 0.1f, 0));
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -23,12 +23,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
-            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player Attack")
-            {
-                anim.SetTrigger("Attack");
+            //if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player Attack")
+            //{
+                anim.SetBool("IsAttacking", true);
                 col.enabled = true;
                 StartCoroutine(Attack());
-            }
+            //}
         }
     }
 
@@ -49,5 +49,6 @@ public class PlayerAttack : MonoBehaviour
         col.enabled = true;
         yield return new WaitForSeconds(endDelay);
         col.enabled = false;
+        anim.SetBool("IsAttacking", false);
     }
 }
