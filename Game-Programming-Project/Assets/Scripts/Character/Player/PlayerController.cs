@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
@@ -47,13 +48,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsJumping", !grounded);
 
         if (!doubleJump && grounded) doubleJump = true;
-
-   
-        if (Input.GetButtonDown("Attack" + " " + gameObject.name))
-        {
-            anim.SetTrigger("Attack");
-        }
-        
     }
 
     private void FixedUpdate()
@@ -114,5 +108,18 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(transform.position, new Vector3(0.8f, 0.1f, 0));
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
+        }
+    }
+
+    public bool GetFacingRight()
+    {
+        return facingRight;
     }
 }
