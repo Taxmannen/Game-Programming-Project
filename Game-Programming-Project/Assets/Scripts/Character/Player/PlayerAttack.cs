@@ -23,12 +23,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
-            //if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Player Attack")
-            //{
-                anim.SetBool("IsAttacking", true);
-                col.enabled = true;
-                StartCoroutine(Attack());
-            //}
+            anim.SetBool("IsAttacking", true);
+            col.enabled = true;
+            StartCoroutine(Attack());
         }
     }
 
@@ -45,10 +42,12 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        float animationDelay = 0.15f;
         yield return new WaitForSeconds(startDelay);
         col.enabled = true;
-        yield return new WaitForSeconds(endDelay);
-        col.enabled = false;
+        yield return new WaitForSeconds(animationDelay);
         anim.SetBool("IsAttacking", false);
+        yield return new WaitForSeconds(endDelay - animationDelay);
+        col.enabled = false;
     }
 }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float groundMovementSpeed;
     public float airMovementSpeed;
     public float smoothing;
+    public bool facingRight;
 
     [Header("Jump")]
     public float jumpPower;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Vector3 velocity = Vector3.zero;
 
-    private bool facingRight;
+
     private bool grounded;
     private bool doubleJump;
     private float x;
@@ -33,7 +34,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        facingRight = true;
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
         if (Input.GetButtonDown("Jump" + " " + gameObject.name))
         {
-            if (grounded) StartCoroutine(JumpRoutine(false));
-            else if (doubleJump) StartCoroutine(JumpRoutine(true));
+            if (grounded) StartCoroutine(Jump(false));
+            else if (doubleJump) StartCoroutine(Jump(true));
         }
 
         grounded = Physics2D.OverlapBox(transform.position, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
@@ -77,9 +77,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-  
-
-    IEnumerator JumpRoutine(bool isDoubleJump)
+    private IEnumerator Jump(bool isDoubleJump)
     {
         rb.velocity = Vector2.zero;
         float timer = 0;
@@ -120,9 +118,5 @@ public class PlayerController : MonoBehaviour
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
         }
     }
-
-    public bool GetFacingRight()
-    {
-        return facingRight;
-    }
+    public bool GetFacingRight() { return facingRight; }
 }

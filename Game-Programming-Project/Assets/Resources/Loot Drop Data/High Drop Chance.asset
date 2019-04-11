@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f23f41d01015db4783895be32ae8eb9, type: 3}
-  m_Name: Low Drop Chance
+  m_Name: High Drop Chance
   m_EditorClassIdentifier: 
   items:
   - item: Item 1
-    dropChance: 60
-  - item: Item 2
-    dropChance: 30
-  - item: Item 3
     dropChance: 10
+  - item: Item 2
+    dropChance: 35
+  - item: Item 3
+    dropChance: 55

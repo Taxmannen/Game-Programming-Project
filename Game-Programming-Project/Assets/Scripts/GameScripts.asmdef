@@ -1,6 +1,8 @@
 {
     "name": "GameScripts",
-    "references": [],
+    "references": [
+        "Unity.TextMeshPro"
+    ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
