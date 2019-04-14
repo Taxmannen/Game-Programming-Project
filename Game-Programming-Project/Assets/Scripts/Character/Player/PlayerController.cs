@@ -4,10 +4,10 @@
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float groundMovementSpeed;
-    public float airMovementSpeed;
-    public float smoothing;
-    public bool facingRight;
+    [SerializeField] private float groundMovementSpeed;
+    [SerializeField] private float airMovementSpeed;
+    [SerializeField] private float smoothing;
+    [SerializeField] private bool facingRight;
 
     [Header("Layers")]
     public LayerMask groundLayer;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        grounded = true;
     }
 
     void Update()

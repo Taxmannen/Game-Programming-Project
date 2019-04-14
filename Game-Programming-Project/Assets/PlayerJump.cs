@@ -4,15 +4,16 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [Header("Jump")]
-    public float jumpPower;
-    public float jumpTime = 1;
+    public float jumpPower = 30;
+    public float jumpTime = 0.05f;
 
     [Header("Fall")]
-    public float fallMultiplier;
-    public float lowJumpMultiplier;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2;
 
     private Rigidbody2D rb;
     private PlayerController pc;
+
     private bool doubleJump;
     private float inAirTimer;
 
@@ -20,7 +21,6 @@ public class PlayerJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
-        
     }
 
     private void Update()
@@ -31,17 +31,21 @@ public class PlayerJump : MonoBehaviour
             else if (doubleJump) StartCoroutine(Jump(true));
         }
 
-        if (!pc.grounded)
+        if (pc.grounded)
         {
-            inAirTimer += Time.deltaTime;
+            if (inAirTimer != 0)
+            {
+                Debug.Log("Time in Air:" + " " + inAirTimer);
+                inAirTimer = 0;
+                if (!doubleJump) doubleJump = true;
+            }
         }
+        else inAirTimer += Time.deltaTime;
+    }
 
-        if (!doubleJump && pc.grounded)
-        {
-            Debug.Log("Time in Air:" + " " + inAirTimer);
-            inAirTimer = 0;
-            doubleJump = true;
-        }
+    private void FixedUpdate()
+    {
+        Fall();
     }
 
     private IEnumerator Jump(bool isDoubleJump)
@@ -57,7 +61,6 @@ public class PlayerJump : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-
         if (isDoubleJump) doubleJump = false;
     }
 
