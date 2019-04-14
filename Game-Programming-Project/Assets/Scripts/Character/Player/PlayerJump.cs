@@ -10,9 +10,11 @@ public class PlayerJump : MonoBehaviour
     [Header("Fall")]
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2;
+    public float fallBeforeStunned = 2.5f;
 
     private Rigidbody2D rb;
     private PlayerController pc;
+    private PlayerStats ps;
 
     private bool doubleJump;
     private float inAirTimer;
@@ -21,6 +23,8 @@ public class PlayerJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
+        ps = GetComponent<PlayerStats>();
+        doubleJump = true;
     }
 
     private void Update()
@@ -36,11 +40,14 @@ public class PlayerJump : MonoBehaviour
             if (inAirTimer != 0)
             {
                 Debug.Log("Time in Air:" + " " + inAirTimer);
-                inAirTimer = 0;
+                if (inAirTimer > fallBeforeStunned) ps.StunPlayer(1);
                 if (!doubleJump) doubleJump = true;
+                inAirTimer = 0;
             }
         }
         else inAirTimer += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.G)) ps.UnstunPlayer();
     }
 
     private void FixedUpdate()
