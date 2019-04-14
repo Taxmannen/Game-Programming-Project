@@ -4,7 +4,7 @@ public class StunPlayer : Item
 {
     private float speedMultiplier = 1;
 
-    void Update()
+    private void Update()
     {
         if (otherPlayer != null)
         {

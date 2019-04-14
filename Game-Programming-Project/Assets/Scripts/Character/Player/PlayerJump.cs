@@ -39,7 +39,7 @@ public class PlayerJump : MonoBehaviour
         {
             if (inAirTimer != 0)
             {
-                Debug.Log("Time in Air:" + " " + inAirTimer);
+                //Debug.Log("Time in Air:" + " " + inAirTimer);
                 if (inAirTimer > fallBeforeStunned) ps.StunPlayer(1);
                 if (!doubleJump) doubleJump = true;
                 inAirTimer = 0;

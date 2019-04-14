@@ -4128,17 +4128,22 @@ PrefabInstance:
     - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
         type: 3}
       propertyPath: attackForce.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
         type: 3}
       propertyPath: attackForce.x
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
         type: 3}
       propertyPath: endDelay
-      value: 0.2
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: startDelay
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 571646f614368a74ba5b573d792bf9cb, type: 3}
@@ -4459,6 +4464,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850285, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: startDelay
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: endDelay
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: attackForce.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: attackForce.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 571646f614368a74ba5b573d792bf9cb, type: 3}
@@ -4797,7 +4827,7 @@ PrefabInstance:
     - target: {fileID: 3944077265288003123, guid: bf3ea585249cdfb4e9c5d4e47d413dcb,
         type: 3}
       propertyPath: timeToSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3ea585249cdfb4e9c5d4e47d413dcb, type: 3}

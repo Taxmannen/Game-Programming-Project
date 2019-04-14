@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private Collider2D col;
     private PlayerController pc;
+    private Coroutine coroutine;
     private float attackTime;
 
     private void Start()
@@ -23,9 +24,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
-            anim.SetBool("IsAttacking", true);
-            col.enabled = true;
-            StartCoroutine(Attack());
+            if (coroutine == null)
+            {
+                coroutine = StartCoroutine(Attack());
+            }
         }
     }
 
@@ -33,7 +35,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.tag == "Player" && Time.time - attackTime > 0.2f)
         {
-            Debug.Log("aa");
             Rigidbody2D otherBody = other.GetComponent<Rigidbody2D>();
             if (pc.GetFacingRight()) otherBody.AddForce(attackForce, ForceMode2D.Impulse);
             else otherBody.AddForce(new Vector2(-attackForce.x, attackForce.y), ForceMode2D.Impulse);
@@ -43,12 +44,14 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        float animationDelay = 0.12f;
+        anim.SetBool("IsAttacking", true);
+
         yield return new WaitForSeconds(startDelay);
         col.enabled = true;
-        yield return new WaitForSeconds(animationDelay);
         anim.SetBool("IsAttacking", false);
-        yield return new WaitForSeconds(endDelay - animationDelay);
+
+        yield return new WaitForSeconds(endDelay);
         col.enabled = false;
+        coroutine = null;
     }
 }
