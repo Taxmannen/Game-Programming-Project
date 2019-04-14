@@ -13,14 +13,6 @@ public class Main : MonoBehaviour
             Utils.ClearLogConsole();
             SceneManager.LoadScene("Main");
         }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            LootDropData data;
-            data = Resources.Load<LootDropData>("Loot Drop Data/Low Drop Chance");
-            data.DropItem(transform.position);
-        }
-
     }
 
     public static class Utils

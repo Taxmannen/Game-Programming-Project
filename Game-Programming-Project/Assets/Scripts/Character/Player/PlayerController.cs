@@ -4,9 +4,9 @@
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float groundMovementSpeed;
-    [SerializeField] private float airMovementSpeed;
-    [SerializeField] private float smoothing;
+    [SerializeField] private float groundMovementSpeed = 40;
+    [SerializeField] private float airMovementSpeed = 30;
+    [SerializeField] private float smoothing = 0.05f;
     [SerializeField] private bool facingRight;
 
     [Header("Layers")]
@@ -61,17 +61,17 @@ public class PlayerController : MonoBehaviour
         return currentFacingRight;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(transform.position, new Vector3(0.55f, 0.1f, 0));
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, new Vector3(0.55f, 0.1f, 0));
     }
 
     public bool GetFacingRight() { return facingRight; }

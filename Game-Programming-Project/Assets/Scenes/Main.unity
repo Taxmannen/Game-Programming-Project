@@ -4867,6 +4867,11 @@ PrefabInstance:
       propertyPath: facingRight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4410066847168022661, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: smoothing
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022657, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: m_CollisionDetection
