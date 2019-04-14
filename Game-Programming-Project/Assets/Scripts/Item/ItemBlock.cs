@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ItemBlock : MonoBehaviour
 {
@@ -12,20 +13,47 @@ public class ItemBlock : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         colliders = GetComponents<Collider2D>();
 
-        SetState(false);
+        SetColliders(false);
+        sr.color = new Color(1, 1, 1, 0);
 
         Invoke("Spawn", timeToSpawn);
     }
 
-    private void Spawn()
+    private void Update()
     {
-        SetState(true);
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            StartCoroutine(FadeTo(0.0f, 1.0f));
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            StartCoroutine(FadeTo(1.0f, 1.0f));
+        }
     }
 
-    private void SetState(bool state)
+    private void Spawn()
     {
-        foreach(Collider2D c in colliders) c.enabled = state;
-        sr.enabled = state;
+        StartCoroutine(FadeTo(1f, 1f));
+    }
+
+    private void SetColliders(bool state)
+    {
+        foreach (Collider2D c in colliders) c.enabled = state;
+    }
+
+    private IEnumerator FadeTo(float newAlpha, float fadeTime)
+    {
+        float alpha = sr.color.a;
+        for (float time = 0.0f; time < 1.0f; time += Time.deltaTime / fadeTime)
+        {
+            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, newAlpha, time));
+            sr.color = newColor;
+            if (newAlpha == 1 && sr.color.a > 0.75f && !colliders[0].enabled)
+            {
+                foreach (Collider2D c in colliders) SetColliders(true);
+            }
+            yield return null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
