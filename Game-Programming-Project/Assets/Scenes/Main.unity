@@ -498,6 +498,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4610634941809850275, guid: 571646f614368a74ba5b573d792bf9cb,
         type: 3}
+    - target: {fileID: 4410066847168022659, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 598186916}
+    - target: {fileID: 4410066847168022659, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 459096153}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9565051e31349f1459403355b5030d68, type: 3}
 --- !u!1 &343957349
@@ -3622,6 +3632,13 @@ MonoBehaviour:
   jumpTime: 0.05
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+  fallBeforeStunned: 2.5
+--- !u!61 &817827595 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2098525906569191654, guid: ffe35805b8e7abe4bb9a402262ee4ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2098525906726265021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &916052656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4088,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: attackForce.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: attackForce.x
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 571646f614368a74ba5b573d792bf9cb, type: 3}
 --- !u!1 &1562595602
@@ -4187,12 +4214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 5
   textField: {fileID: 936509242}
-  goal: {fileID: 459096153}
-  player1: {fileID: 598186916}
-  player2: {fileID: 1242754955}
-  distanceBetweenPlayers: 0
-  distanceToGoalPlayer1: 0
-  distanceToGoalPlayer2: 0
+  goalTrigger: {fileID: 817827595}
 --- !u!1 &1746301306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,7 +4260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c40b49304ac194e90fb1e12b7aebbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: 0
+  players: 1
   runThis: 1
   player1: {fileID: 816649759}
   player2: {fileID: 963269901}
@@ -4730,6 +4752,11 @@ PrefabInstance:
       propertyPath: scoreBoard
       value: 
       objectReference: {fileID: 1562595607}
+    - target: {fileID: 3944077265288003123, guid: bf3ea585249cdfb4e9c5d4e47d413dcb,
+        type: 3}
+      propertyPath: timeToSpawn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3ea585249cdfb4e9c5d4e47d413dcb, type: 3}
 --- !u!1001 &4410066847727801123
@@ -4910,6 +4937,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4610634941809850275, guid: 571646f614368a74ba5b573d792bf9cb,
         type: 3}
+    - target: {fileID: 4410066847168022659, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 1242754955}
+    - target: {fileID: 4410066847168022659, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 459096153}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9565051e31349f1459403355b5030d68, type: 3}
 --- !u!114 &7673750614134040380

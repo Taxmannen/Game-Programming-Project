@@ -10,8 +10,8 @@ public class Main : MonoBehaviour
     {
         if (Input.GetButtonDown("Restart"))
         {
-            Utils.ClearLogConsole();
             SceneManager.LoadScene("Main");
+            if (Application.isEditor) Utils.ClearLogConsole();
         }
     }
 
@@ -24,9 +24,11 @@ public class Main : MonoBehaviour
             {
                 if (_clearConsoleMethod == null)
                 {
-                    Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
-                    Type logEntries = assembly.GetType("UnityEditor.LogEntries");
-                    _clearConsoleMethod = logEntries.GetMethod("Clear");
+                    #if UNITY_EDITOR
+                        Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
+                        Type logEntries = assembly.GetType("UnityEditor.LogEntries");
+                        _clearConsoleMethod = logEntries.GetMethod("Clear");
+                    #endif
                 }
                 return _clearConsoleMethod;
             }

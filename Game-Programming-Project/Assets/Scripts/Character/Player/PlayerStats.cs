@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class PlayerStats : Character
 {
+    [Header("Setup")]
+    public Transform otherPlayer;
+    public Transform goal;
+
     private Rigidbody2D rb;
     private Animator anim;
     private Coroutine currentCoroutine;
@@ -17,6 +21,11 @@ public class PlayerStats : Character
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        SetDistances();
     }
 
     public void StunPlayer(float stunTime)
@@ -51,11 +60,11 @@ public class PlayerStats : Character
         anim.SetBool("IsStunned", false);
     }
 
-    public void SetDistances(float toPlayer, float toGoal, float otherPlayerToGoal)
+    public void SetDistances()
     {
-        DistanceToGoal = toGoal;
-        DistanceToOtherPlayer = toPlayer;
-        OtherPlayersDistanceToGoal = otherPlayerToGoal;
+        DistanceToGoal             = Vector2.Distance(transform.position, goal.position);
+        DistanceToOtherPlayer      = Vector2.Distance(transform.position, otherPlayer.position);
+        OtherPlayersDistanceToGoal = Vector2.Distance(otherPlayer.position, goal.position);
     }
 
     public float DistanceToOtherPlayer { get; private set; }
