@@ -4169,7 +4169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1644be6bdbd95347ac068f581d2ee34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 120
+  timer: 5
   textField: {fileID: 936509242}
   goal: {fileID: 459096153}
   player1: {fileID: 598186916}
@@ -4221,7 +4221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c40b49304ac194e90fb1e12b7aebbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: 1
+  players: 0
   runThis: 1
   player1: {fileID: 816649759}
   player2: {fileID: 963269901}
@@ -4696,6 +4696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944077265288003120, guid: bf3ea585249cdfb4e9c5d4e47d413dcb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3944077265288003123, guid: bf3ea585249cdfb4e9c5d4e47d413dcb,
         type: 3}

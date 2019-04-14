@@ -2,8 +2,6 @@
 
 public class ItemBlock : MonoBehaviour
 {
-    public ScoreBoard scoreBoard;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -14,6 +12,10 @@ public class ItemBlock : MonoBehaviour
             if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
             {
                 itemName = "Low Drop Chance";
+            }
+            else if (playerStats == null) //Tillfälligt
+            {
+                itemName = "Medium Drop Chance";
             }
             else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal)
             {

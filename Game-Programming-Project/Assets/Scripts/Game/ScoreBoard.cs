@@ -63,5 +63,9 @@ public class ScoreBoard : MonoBehaviour
         player2Stats.SetDistances(distanceBetweenPlayers, distanceToGoalPlayer2, distanceToGoalPlayer1);
     }
 
-    public void SetWinState(bool state) { won = state; }
+    public void SetWinState(bool state)
+    {
+        won = state;
+        if (state) triggered = true;
+    }
 }
