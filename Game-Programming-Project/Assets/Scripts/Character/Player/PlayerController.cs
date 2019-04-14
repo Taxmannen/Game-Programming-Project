@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
 public class PlayerController : MonoBehaviour
@@ -60,6 +61,26 @@ public class PlayerController : MonoBehaviour
 
         if (theScale.x > 0) currentFacingRight = true;
         return currentFacingRight;
+    }
+
+    public void HitPlayer(Vector2 force, float time)
+    {
+        StartCoroutine(Hit(force, time));
+    }
+
+    private IEnumerator Hit(Vector2 force, float hitTime)
+    {
+        float timer = 0;
+        rb.velocity = Vector2.zero;
+        anim.SetBool("IsHit", true);
+
+        while (timer < hitTime)
+        {
+            rb.velocity = force;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        anim.SetBool("IsHit", false);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -38,24 +38,19 @@ public class PlayerStats : Character
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
-            Unstun();
+            anim.SetBool("IsStunned", false);
+            rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
-    public IEnumerator Stun(float stunTime)
+    private IEnumerator Stun(float stunTime)
     {
-        rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsStunned", true);
+        rb.bodyType = RigidbodyType2D.Static;
 
         yield return new WaitForSeconds(stunTime);
 
-        Unstun();    
-    }
-
-    private void Unstun()
-    {
-        rb.bodyType = RigidbodyType2D.Dynamic;
-        anim.SetBool("IsStunned", false);
+        UnstunPlayer();
     }
 
     public void SetDistances()

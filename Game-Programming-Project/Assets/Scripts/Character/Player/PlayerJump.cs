@@ -46,8 +46,6 @@ public class PlayerJump : MonoBehaviour
             }
         }
         else inAirTimer += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.G)) ps.UnstunPlayer();
     }
 
     private void FixedUpdate()

@@ -3,15 +3,19 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [Header("Attack")]
+    public float attackTime;
+    public Vector2 attackForce;
+
+    [Header("Animation")]
     public float startDelay;
     public float endDelay;
-    public Vector2 attackForce;
 
     private Animator anim;
     private Collider2D col;
     private PlayerController pc;
     private Coroutine coroutine;
-    private float attackTime;
+    private float attackDelay;
 
     private void Start()
     {
@@ -24,21 +28,18 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
-            if (coroutine == null)
-            {
-                coroutine = StartCoroutine(Attack());
-            }
+            if (coroutine == null) coroutine = StartCoroutine(Attack());
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && Time.time - attackTime > 0.2f)
+        if (other.tag == "Player" && Time.time - attackDelay > 0.2f)
         {
-            Rigidbody2D otherBody = other.GetComponent<Rigidbody2D>();
-            if (pc.GetFacingRight()) otherBody.AddForce(attackForce, ForceMode2D.Impulse);
-            else otherBody.AddForce(new Vector2(-attackForce.x, attackForce.y), ForceMode2D.Impulse);
-            attackTime = Time.time;
+            PlayerController otherPc = other.GetComponent<PlayerController>();
+            Vector2 force = pc.GetFacingRight() ? attackForce : new Vector2(-attackForce.x, attackForce.y);
+            otherPc.HitPlayer(force, attackTime);
+            attackDelay = Time.time;
         }
     }
 
