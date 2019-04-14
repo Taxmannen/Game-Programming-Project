@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Layers")]
     public LayerMask groundLayer;
+    public Vector3 offset;
 
     [HideInInspector]
     public bool grounded;
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
        
-        grounded = Physics2D.OverlapBox(transform.position, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
+        grounded = Physics2D.OverlapBox(transform.position - offset, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
     }
 
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, new Vector3(0.55f, 0.1f, 0));
+        Gizmos.DrawCube(transform.position - offset, new Vector3(0.55f, 0.1f, 0));
     }
 
     public bool GetFacingRight() { return facingRight; }

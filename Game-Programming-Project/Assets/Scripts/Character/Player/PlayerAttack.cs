@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.tag == "Player" && Time.time - attackTime > 0.2f)
         {
+            Debug.Log("aa");
             Rigidbody2D otherBody = other.GetComponent<Rigidbody2D>();
             if (pc.GetFacingRight()) otherBody.AddForce(attackForce, ForceMode2D.Impulse);
             else otherBody.AddForce(new Vector2(-attackForce.x, attackForce.y), ForceMode2D.Impulse);
@@ -42,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        float animationDelay = 0.15f;
+        float animationDelay = 0.12f;
         yield return new WaitForSeconds(startDelay);
         col.enabled = true;
         yield return new WaitForSeconds(animationDelay);

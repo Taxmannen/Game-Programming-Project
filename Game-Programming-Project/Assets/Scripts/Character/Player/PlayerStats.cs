@@ -9,7 +9,7 @@ public class PlayerStats : Character
 
     private Rigidbody2D rb;
     private Animator anim;
-    private Coroutine currentCoroutine;
+    private Coroutine coroutine;
 
     public PlayerStats()
     {
@@ -30,21 +30,20 @@ public class PlayerStats : Character
 
     public void StunPlayer(float stunTime)
     {
-        currentCoroutine = StartCoroutine(Stun(stunTime));
+        coroutine = StartCoroutine(Stun(stunTime));
     }
 
     public void UnstunPlayer()
     {
-        if (currentCoroutine != null)
+        if (coroutine != null)
         {
-            StopCoroutine(currentCoroutine);
+            StopCoroutine(coroutine);
             Unstun();
         }
     }
 
     public IEnumerator Stun(float stunTime)
     {
-        Debug.Log("Stun Player");
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("IsStunned", true);
 
@@ -55,7 +54,6 @@ public class PlayerStats : Character
 
     private void Unstun()
     {
-        Debug.Log("Unstun Player");
         rb.bodyType = RigidbodyType2D.Dynamic;
         anim.SetBool("IsStunned", false);
     }

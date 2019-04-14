@@ -11,7 +11,7 @@ public class LootDropData : ScriptableObject
         foreach (ItemStruct drop in items)
         {
             int randomDrop = UnityEngine.Random.Range(1, 101);
-            if (randomDrop < drop.dropChance)
+            if (randomDrop > drop.dropChance)
             {
                 GameObject currentItem = Instantiate(Resources.Load<GameObject>("Items/" + drop.item));
                 currentItem.GetComponent<Item>().SetPlayers(player, otherPlayer);

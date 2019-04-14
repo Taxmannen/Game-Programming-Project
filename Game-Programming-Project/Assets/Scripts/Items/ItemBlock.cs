@@ -39,15 +39,14 @@ public class ItemBlock : MonoBehaviour
             {
                 itemName = "Low Drop Chance";
             }
-            else if (playerStats == null) //Tillfälligt
+            else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal)
             {
                 itemName = "Medium Drop Chance";
             }
-            else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal)
+            else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal) //Tillfällig
             {
                 itemName = "High Drop Chance";
             }
-            Debug.Log(itemName);
             LootDropData data = Resources.Load<LootDropData>("Loot Drop Data/" + itemName);
             data.DropItem(transform.position, other.transform, other.GetComponent<PlayerStats>().otherPlayer);
             Destroy(gameObject);

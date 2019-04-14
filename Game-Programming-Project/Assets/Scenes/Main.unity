@@ -355,7 +355,7 @@ PrefabInstance:
     - target: {fileID: 4410066847168022663, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.05
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022663, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
@@ -472,6 +472,11 @@ PrefabInstance:
       propertyPath: facingRight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4410066847168022661, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: offset.y
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022657, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -492,6 +497,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 732e9fea942fd1f4ebfa75f246dd8611, type: 2}
+    - target: {fileID: 4410066847168022658, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022659, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: attackArm
@@ -3837,6 +3847,23 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 338737205}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &963269908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963269901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa2c505a6a55684cac241f34a6720d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpPower: 10
+  jumpTime: 0.05
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  fallBeforeStunned: 2.5
 --- !u!1 &1007511833
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,6 +4115,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850285, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850285, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
         type: 3}
       propertyPath: attackForce.y
@@ -4097,6 +4134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackForce.x
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610634941809850284, guid: 571646f614368a74ba5b573d792bf9cb,
+        type: 3}
+      propertyPath: endDelay
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 571646f614368a74ba5b573d792bf9cb, type: 3}
@@ -4519,7 +4561,7 @@ PrefabInstance:
     - target: {fileID: 7673750613416282992, guid: e5f3b0a57dec2824996fc586bbcdd78b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8006387
+      value: -0.9506388
       objectReference: {fileID: 0}
     - target: {fileID: 7673750613416282992, guid: e5f3b0a57dec2824996fc586bbcdd78b,
         type: 3}
@@ -4789,7 +4831,7 @@ PrefabInstance:
     - target: {fileID: 4410066847168022663, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.05
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022663, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
@@ -4906,6 +4948,11 @@ PrefabInstance:
       propertyPath: smoothing
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 4410066847168022661, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: offset.y
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022657, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -4931,6 +4978,16 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 732e9fea942fd1f4ebfa75f246dd8611, type: 2}
+    - target: {fileID: 4410066847168022658, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410066847168022658, guid: 9565051e31349f1459403355b5030d68,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4410066847168022659, guid: 9565051e31349f1459403355b5030d68,
         type: 3}
       propertyPath: attackArm
