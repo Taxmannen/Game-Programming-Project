@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherPlayer: {fileID: 0}
   goal: {fileID: 0}
+  stunned: 0
 --- !u!114 &6217553721454463198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +266,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  offset: {x: 0, y: 0.85, z: 0}
+  groundOffset: {x: 0, y: 0.85, z: 0}
   raycastFrom: {fileID: 810788218}
   grounded: 0
 --- !u!114 &7744647938130040443
@@ -284,7 +285,7 @@ MonoBehaviour:
   jumpTime: 0.05
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  fallBeforeStunned: 2.5
+  fallBeforeStunned: 2
 --- !u!1 &7617122058711073275
 GameObject:
   m_ObjectHideFlags: 0

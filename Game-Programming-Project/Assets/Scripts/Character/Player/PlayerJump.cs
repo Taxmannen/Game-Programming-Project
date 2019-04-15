@@ -56,8 +56,8 @@ public class PlayerJump : MonoBehaviour
     private IEnumerator Jump(bool isDoubleJump)
     {
         rb.velocity = Vector2.zero;
-        float timer = 0;
 
+        float timer = 0;
         while (Input.GetButton("Jump" + " " + gameObject.name) && timer < jumpTime)
         {
             float velocityY = Mathf.Sqrt(jumpPower * Mathf.Abs(Physics2D.gravity.y));
