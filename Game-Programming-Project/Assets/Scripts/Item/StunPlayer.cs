@@ -20,7 +20,7 @@ public class StunPlayer : Item
     {
         if (otherPlayer != null && other.gameObject.name == otherPlayer.name)
         {
-            other.GetComponent<PlayerStats>().StunPlayer(3);
+            other.GetComponent<PlayerStats>().StunPlayer(stunLength);
             base.UseItem();
         }
     }

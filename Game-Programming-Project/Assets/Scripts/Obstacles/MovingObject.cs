@@ -10,6 +10,10 @@ public class MovingObject : MonoBehaviour
     public Vector3 startPos;
     public Vector3 endPos;
 
+    [Header("Blade")]
+    public Transform blade;
+    public float rotationSpeed;
+
     [Header("Debug")]
     public bool drawGizmos;
 
@@ -36,7 +40,7 @@ public class MovingObject : MonoBehaviour
             if (Vector3.Distance(transform.position, pos + endPos) < 0.1f)
                 StartCoroutine(ChangeDirection(Direction.StartingPosition, delayBetweenSwitch));
         }
-      
+        if (blade != null) transform.Rotate(new Vector3(0, 0, -(rotationSpeed * Time.deltaTime)));
     }
 
     private IEnumerator ChangeDirection(Direction dir, float delay)
@@ -52,6 +56,5 @@ public class MovingObject : MonoBehaviour
             Gizmos.DrawSphere(transform.position + startPos, 0.25f);
             Gizmos.DrawSphere(transform.position + endPos, 0.25f);
         }
-       
     }
 }

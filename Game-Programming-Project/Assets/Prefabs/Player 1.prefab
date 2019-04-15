@@ -244,9 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a695d920e65cc344794bea1576db1936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stunned: 0
   otherPlayer: {fileID: 0}
   goal: {fileID: 0}
-  stunned: 0
 --- !u!114 &6217553721454463198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   jumpTime: 0.05
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  fallBeforeStunned: 2
+  fallBeforeStunned: 5
 --- !u!1 &7617122058711073275
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: Low Drop Chance
   m_EditorClassIdentifier: 
   items:
-  - item: Item 1
+  - item: Stun Item
     dropChance: 0
-  - item: Item 2
-    dropChance: 30
-  - item: Item 3
-    dropChance: 10

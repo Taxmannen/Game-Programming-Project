@@ -31,14 +31,8 @@ public class ItemBlock : MonoBehaviour
     {
         if (Application.isEditor)
         {
-            if (Input.GetKeyUp(KeyCode.T))
-            {
-                StartCoroutine(FadeTo(0.0f, 1.0f));
-            }
-            if (Input.GetKeyUp(KeyCode.F))
-            {
-                StartCoroutine(FadeTo(1.0f, 1.0f));
-            }
+            if (Input.GetKeyUp(KeyCode.T)) StartCoroutine(FadeTo(0.0f, 1.0f));
+            if (Input.GetKeyUp(KeyCode.F)) StartCoroutine(FadeTo(1.0f, 1.0f));
         }
     }
 
