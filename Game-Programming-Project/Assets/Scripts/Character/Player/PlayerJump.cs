@@ -19,6 +19,9 @@ public class PlayerJump : MonoBehaviour
     private bool doubleJump;
     private float inAirTimer;
 
+    //FIXAS!!
+    private float startFallPosY;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,12 +43,23 @@ public class PlayerJump : MonoBehaviour
             if (inAirTimer != 0)
             {
                 //Debug.Log("Time in Air:" + " " + inAirTimer);
-                if (inAirTimer > fallBeforeStunned) ps.StunPlayer(1);
+                //if (inAirTimer > fallBeforeStunned) ps.StunPlayer(1);
                 if (!doubleJump) doubleJump = true;
+                if (Mathf.Abs(startFallPosY - transform.position.y) > fallBeforeStunned)
+                {
+                    Debug.Log("FallLength:" + " " + Mathf.Abs(startFallPosY - transform.position.y));
+                    ps.StunPlayer(1);
+                }
+                startFallPosY = 0;
                 inAirTimer = 0;
             }
         }
-        else inAirTimer += Time.deltaTime;
+        else
+        {
+            if (inAirTimer == 0)
+                startFallPosY = transform.position.y;
+            inAirTimer += Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         {
             if (players == Players.singleplayer)
             {
-                player1.transform.position = new Vector3(0, -2.2f, 0);
+                player1.transform.position = new Vector3(0, 0.8f, 0);
                 player1.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
                 player2.SetActive(false);
                 singleplayerCamera.SetActive(true);
@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                player1.transform.position = new Vector3(-4, -2.2f, 0);
-                player2.transform.position = new Vector3(4, -2.2f, 0);
+                player1.transform.position = new Vector3(-4, 0.8f, 0);
+                player2.transform.position = new Vector3(4, 0.8f, 0);
                 player2.transform.localScale = new Vector3(-1, 1, 1);
 
                 singleplayerCamera.SetActive(false);
