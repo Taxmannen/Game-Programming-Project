@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class PlayerStats : Character
 {
+    [HideInInspector] public bool stunned = false;
+
     [Header("Setup")]
     public Transform otherPlayer;
     public Transform goal;
-    public bool stunned = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -41,7 +42,6 @@ public class PlayerStats : Character
             StopCoroutine(coroutine);
             anim.SetBool("IsStunned", false);
             stunned = false;
-            //rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
