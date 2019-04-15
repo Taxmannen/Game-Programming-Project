@@ -2,6 +2,8 @@
 
 public class StunPlayer : Item
 {
+    public float stunLength = 3;
+
     private float speedMultiplier = 1;
 
     private void Update()
@@ -18,7 +20,7 @@ public class StunPlayer : Item
     {
         if (otherPlayer != null && other.gameObject.name == otherPlayer.name)
         {
-            other.GetComponent<PlayerStats>().StunPlayer(2);
+            other.GetComponent<PlayerStats>().StunPlayer(3);
             base.UseItem();
         }
     }

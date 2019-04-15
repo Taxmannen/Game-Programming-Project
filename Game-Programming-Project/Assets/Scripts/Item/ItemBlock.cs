@@ -5,6 +5,9 @@ public class ItemBlock : MonoBehaviour
 {
     public float timeToSpawn;
 
+    [Header("Debug")]
+    public bool debugMode;
+
     private Collider2D[] colliders;
     private SpriteRenderer sr;
 
@@ -16,18 +19,26 @@ public class ItemBlock : MonoBehaviour
         SetColliders(false);
         sr.color = new Color(1, 1, 1, 0);
 
+        if (debugMode) Invoke("Spawn", timeToSpawn);  
+    }
+
+    public void ShowBlock()
+    {
         Invoke("Spawn", timeToSpawn);
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.T))
+        if (Application.isEditor)
         {
-            StartCoroutine(FadeTo(0.0f, 1.0f));
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            StartCoroutine(FadeTo(1.0f, 1.0f));
+            if (Input.GetKeyUp(KeyCode.T))
+            {
+                StartCoroutine(FadeTo(0.0f, 1.0f));
+            }
+            if (Input.GetKeyUp(KeyCode.F))
+            {
+                StartCoroutine(FadeTo(1.0f, 1.0f));
+            }
         }
     }
 
@@ -70,10 +81,6 @@ public class ItemBlock : MonoBehaviour
             else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal)
             {
                 itemName = "Medium Drop Chance";
-            }
-            else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal) //Tillfällig
-            {
-                itemName = "High Drop Chance";
             }
             LootDropData data = Resources.Load<LootDropData>("Loot Drop Data/" + itemName);
             data.DropItem(transform.position, other.transform, other.GetComponent<PlayerStats>().otherPlayer);

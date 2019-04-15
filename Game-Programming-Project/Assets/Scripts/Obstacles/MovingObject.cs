@@ -10,6 +10,9 @@ public class MovingObject : MonoBehaviour
     public Vector3 startPos;
     public Vector3 endPos;
 
+    [Header("Debug")]
+    public bool drawGizmos;
+
     private Vector3 pos;
     private Direction currentDir = Direction.StartingPosition;
 
@@ -44,7 +47,11 @@ public class MovingObject : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position + startPos, 0.25f);
-        Gizmos.DrawSphere(transform.position + endPos, 0.25f);
+        if (drawGizmos)
+        {
+            Gizmos.DrawSphere(transform.position + startPos, 0.25f);
+            Gizmos.DrawSphere(transform.position + endPos, 0.25f);
+        }
+       
     }
 }
