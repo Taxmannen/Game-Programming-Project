@@ -11,6 +11,7 @@ public class Main : MonoBehaviour
         if (Input.GetButtonDown("Restart"))
         {
             SceneManager.LoadScene("Main");
+            Time.timeScale = 1;
             if (Application.isEditor) Utils.ClearLogConsole();
         }
     }

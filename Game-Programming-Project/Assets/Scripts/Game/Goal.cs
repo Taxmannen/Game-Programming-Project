@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour
         if (other.tag == "Player" && !triggered)
         {
             Debug.Log("WINNER :" + " " + other.gameObject.name);
-            scoreBoard.SetWinState(true);
+            scoreBoard.SetWinState(true, other.gameObject.name);
             triggered = true;
         }
     }

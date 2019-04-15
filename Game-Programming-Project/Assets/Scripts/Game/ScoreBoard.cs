@@ -6,36 +6,39 @@ public class ScoreBoard : MonoBehaviour
     [Header("Timer")]
     public float timer;
 
-    [Header("Timer")]
-    public TextMeshProUGUI textField;
-
     [Header("Goal")]
     public Collider2D goalTrigger;
 
+    [Header("Timer")]
+    public TextMeshProUGUI timerText;
+
+    [Header("Popup")]
+    public GameObject popup;
+    public TextMeshProUGUI popupText;
+
     private bool triggered;
-    private bool won;
 
     private void Update()
     {
-        if (timer > 0 && !won)
+        if (timer > 0 && !triggered)
         {
             timer -= Time.deltaTime;
-            textField.text = "" + (int)timer;
+            timerText.text = "" + (int)(timer + 1);
         }
         else
         {
-            if (!triggered)
-            {
-                Debug.Log("You Lost!");
-                goalTrigger.enabled = false;
-                triggered = true;
-            }
+            if (!triggered) SetWinState(false, null);
         }
     }
 
-    public void SetWinState(bool state)
+    public void SetWinState(bool state, string winner)
     {
-        won = state;
-        if (state) triggered = true;
+        string text = state ? "Winner :" + " " + winner : "You Lost";
+
+        popupText.text = text;
+        popup.SetActive(true);
+        goalTrigger.enabled = false;
+        triggered = true;
+        Time.timeScale = 0;
     }
 }
