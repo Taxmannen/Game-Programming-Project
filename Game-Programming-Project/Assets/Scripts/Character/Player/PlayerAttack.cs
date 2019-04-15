@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private Collider2D col;
     private PlayerController pc;
+    private PlayerStats ps;
     private Coroutine coroutine;
     private float attackDelay;
 
@@ -21,12 +22,13 @@ public class PlayerAttack : MonoBehaviour
     {
         anim = transform.parent.GetComponent<Animator>();
         pc = transform.parent.GetComponent<PlayerController>();
+        ps = transform.parent.GetComponent<PlayerStats>();
         col = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Attack" + " " + transform.parent.name))
+        if (!ps.stunned && Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
             if (coroutine == null) coroutine = StartCoroutine(Attack());
         }

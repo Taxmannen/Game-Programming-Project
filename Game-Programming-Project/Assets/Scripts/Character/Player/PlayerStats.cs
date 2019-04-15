@@ -6,6 +6,7 @@ public class PlayerStats : Character
     [Header("Setup")]
     public Transform otherPlayer;
     public Transform goal;
+    public bool stunned = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -39,14 +40,16 @@ public class PlayerStats : Character
         {
             StopCoroutine(coroutine);
             anim.SetBool("IsStunned", false);
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            stunned = false;
+            //rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
     private IEnumerator Stun(float stunTime)
     {
+        rb.velocity = Vector2.zero;
         anim.SetBool("IsStunned", true);
-        rb.bodyType = RigidbodyType2D.Static;
+        stunned = true;
 
         yield return new WaitForSeconds(stunTime);
 

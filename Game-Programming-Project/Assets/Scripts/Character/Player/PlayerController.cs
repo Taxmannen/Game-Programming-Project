@@ -10,37 +10,51 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float smoothing = 0.05f;
     [SerializeField] private bool facingRight;
 
-    [Header("Layers")]
+    [Header("Setup")]
     public LayerMask groundLayer;
-    public Vector3 offset;
+    public Vector3 groundOffset;
+    public Transform raycastFrom;
 
     [HideInInspector]
     public bool grounded;
 
     private Rigidbody2D rb;
     private Animator anim;
+    private PlayerStats ps;
+
     private Vector3 velocity = Vector3.zero;
 
+    private bool hittingWall;
     private float x;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        ps = GetComponent<PlayerStats>();
         grounded = true;
+
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ps.otherPlayer.GetComponent<Collider2D>());
     }
 
     void Update()
     {
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
        
-        grounded = Physics2D.OverlapBox(transform.position - offset, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
+        grounded = Physics2D.OverlapBox(transform.position - groundOffset, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
+
+        if (raycastFrom != null)
+        {
+            Vector3 dir = new Vector3(0, 0, 0) { x = facingRight ? 0.15f : -0.15f };
+            Debug.DrawRay(raycastFrom.position, dir, Color.red);
+            hittingWall = Physics2D.Raycast(raycastFrom.position, dir, Mathf.Abs(dir.x), groundLayer);
+        }
     }
 
     private void FixedUpdate()
     {
-        Movement();
+        if (!ps.stunned) Movement();
     }
 
     public void Movement()
@@ -48,7 +62,9 @@ public class PlayerController : MonoBehaviour
         Vector3 targetVelocity = new Vector2((x * Time.fixedDeltaTime) * 10f, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
         if (x < 0 && facingRight || x > 0 && !facingRight) facingRight = Flip();
-        anim.SetFloat("Speed", Mathf.Abs(x));
+
+        if (!hittingWall) anim.SetFloat("Speed", Mathf.Abs(x));
+        else              anim.SetFloat("Speed", 0);
     }
 
     private bool Flip()
@@ -65,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitPlayer(Vector2 force, float time)
     {
-        StartCoroutine(Hit(force, time));
+        if (!ps.stunned) StartCoroutine(Hit(force, time));
     }
 
     private IEnumerator Hit(Vector2 force, float hitTime)
@@ -83,17 +99,9 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsHit", false);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
-        }
-    }
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position - offset, new Vector3(0.55f, 0.1f, 0));
+        Gizmos.DrawCube(transform.position - groundOffset, new Vector3(0.55f, 0.1f, 0));
     }
 
     public bool GetFacingRight() { return facingRight; }
