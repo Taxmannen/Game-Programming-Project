@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1711186378560667748}
   - component: {fileID: 1711186378560667746}
   - component: {fileID: 3066087814259596999}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Player 2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711186378560667739}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 0.8, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
@@ -186,7 +186,7 @@ MonoBehaviour:
   facingRight: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   groundOffset: {x: 0, y: 0.85, z: 0}
   raycastFrom: {fileID: 4753103946472009158}
   grounded: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 2901196655823882566}
   - component: {fileID: 2901196655823882569}
   - component: {fileID: 2901196655823882568}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Attack Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753103946472009158}
   - component: {fileID: 4753103946472009159}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Raycast From
   m_TagString: Untagged
   m_Icon: {fileID: 0}

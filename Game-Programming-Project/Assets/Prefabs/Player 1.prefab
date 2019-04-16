@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810788218}
   - component: {fileID: 810788219}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Raycast From
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6217553721454463192}
   - component: {fileID: 6217553721454463198}
   - component: {fileID: 7744647938130040443}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ MonoBehaviour:
   facingRight: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   groundOffset: {x: 0, y: 0.85, z: 0}
   raycastFrom: {fileID: 810788218}
   grounded: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 7617122058711073274}
   - component: {fileID: 7617122058711073269}
   - component: {fileID: 7617122058711073268}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Attack Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
