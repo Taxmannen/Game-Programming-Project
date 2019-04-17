@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private bool hittingWall;
     private float x;
+    private bool attacked;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!ps.stunned) Movement();
+        if (!ps.stunned && !attacked) Movement();
     }
 
     public void Movement()
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
         anim.SetBool("IsHit", true);
 
+        attacked = true;
         while (timer < hitTime)
         {
             rb.velocity = force;
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         anim.SetBool("IsHit", false);
+        attacked = false;
     }
 
     private void OnDrawGizmos()

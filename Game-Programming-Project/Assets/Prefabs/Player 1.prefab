@@ -260,8 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMovementSpeed: 40
-  airMovementSpeed: 30
-  smoothing: 0.05
+  airMovementSpeed: 37.5
+  smoothing: 0.075
   facingRight: 1
   groundLayer:
     serializedVersion: 2
@@ -281,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2c505a6a55684cac241f34a6720d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 9
-  jumpTime: 0.05
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  jumpPower: 9.5
+  jumpTime: 0.15
+  fallMultiplier: 3
+  lowJumpMultiplier: 4
   fallBeforeStunned: 5
 --- !u!1 &7617122058711073275
 GameObject:

@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!ps.stunned && Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
-            if (coroutine == null) coroutine = StartCoroutine(Attack());
+            if (coroutine == null && pc.grounded) coroutine = StartCoroutine(Attack());
         }
     }
 

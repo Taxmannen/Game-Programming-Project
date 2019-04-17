@@ -10,6 +10,8 @@ public class PlayerJump : MonoBehaviour
     [Header("Fall")]
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2;
+ 
+    [Header("Fall Damage")]
     public float fallBeforeStunned = 2.5f;
 
     private Rigidbody2D rb;
@@ -21,6 +23,7 @@ public class PlayerJump : MonoBehaviour
 
     //FIXAS!!
     private float startFallPosY;
+    private bool jumping;
 
     private void Start()
     {
@@ -34,7 +37,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (!ps.stunned && Input.GetButtonDown("Jump" + " " + gameObject.name))
         {
-            if (pc.grounded) StartCoroutine(Jump(false));
+            if (pc.grounded)     StartCoroutine(Jump(false));
             else if (doubleJump) StartCoroutine(Jump(true));
         }
 
@@ -56,8 +59,7 @@ public class PlayerJump : MonoBehaviour
         }
         else
         {
-            if (inAirTimer == 0)
-                startFallPosY = transform.position.y;
+            if (inAirTimer == 0) startFallPosY = transform.position.y;
             inAirTimer += Time.deltaTime;
         }
     }
@@ -70,6 +72,7 @@ public class PlayerJump : MonoBehaviour
     private IEnumerator Jump(bool isDoubleJump)
     {
         rb.velocity = Vector2.zero;
+        jumping = true;
 
         float timer = 0;
         while (Input.GetButton("Jump" + " " + gameObject.name) && timer < jumpTime)
@@ -81,16 +84,20 @@ public class PlayerJump : MonoBehaviour
             yield return null;
         }
         if (isDoubleJump) doubleJump = false;
+
+        jumping = false;
     }
 
     private void Fall()
     {
         if (rb.velocity.y < 0)
         {
+            //Debug.Log("Fall Multiplier");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump" + " " + gameObject.name))
+        else if (rb.velocity.y > 0 && !jumping)
         {
+            //Debug.Log("Jump Multiplier");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
