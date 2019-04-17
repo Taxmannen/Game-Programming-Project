@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool facingRight;
 
     [Header("Setup")]
-    public LayerMask groundLayer;
-    public Vector3 groundOffset;
-    public Transform raycastFrom;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Vector3 groundOffset;
+    [SerializeField] private Transform raycastFrom;
 
     [HideInInspector]
     public bool grounded;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         ps = GetComponent<PlayerStats>();
         grounded = true;
 
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ps.otherPlayer.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ps.OtherPlayer.GetComponent<Collider2D>());
     }
 
     void Update()
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!ps.stunned && !attacked) Movement();
+        if (!ps.Stunned && !attacked) Movement();
     }
 
     public void Movement()
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitPlayer(Vector2 force, float time)
     {
-        if (!ps.stunned) StartCoroutine(Hit(force, time));
+        if (!ps.Stunned) StartCoroutine(Hit(force, time));
     }
 
     private IEnumerator Hit(Vector2 force, float hitTime)

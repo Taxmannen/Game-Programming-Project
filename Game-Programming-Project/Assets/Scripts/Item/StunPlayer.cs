@@ -2,7 +2,7 @@
 
 public class StunPlayer : Item
 {
-    public float stunLength = 3;
+    [SerializeField] private float stunLength = 3;
 
     private float speedMultiplier = 1;
 

@@ -4,12 +4,12 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack")]
-    public float attackTime;
-    public Vector2 attackForce;
+    [SerializeField] private float attackTime;
+    [SerializeField] private Vector2 attackForce;
 
     [Header("Animation")]
-    public float startDelay;
-    public float endDelay;
+    [SerializeField] private float startDelay;
+    [SerializeField] private float endDelay;
 
     private Animator anim;
     private Collider2D col;
@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!ps.stunned && Input.GetButtonDown("Attack" + " " + transform.parent.name))
+        if (!ps.Stunned && Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
             if (coroutine == null && pc.grounded) coroutine = StartCoroutine(Attack());
         }

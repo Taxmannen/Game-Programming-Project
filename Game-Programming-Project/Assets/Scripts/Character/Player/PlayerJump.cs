@@ -4,15 +4,15 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [Header("Jump")]
-    public float jumpPower = 30;
-    public float jumpTime = 0.05f;
+    [SerializeField] private float jumpPower = 30;
+    [SerializeField] private float jumpTime = 0.05f;
 
     [Header("Fall")]
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2;
+    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float lowJumpMultiplier = 2;
  
     [Header("Fall Damage")]
-    public float fallBeforeStunned = 2.5f;
+    [SerializeField] private float fallBeforeStunned = 2.5f;
 
     private Rigidbody2D rb;
     private PlayerController pc;
@@ -35,7 +35,7 @@ public class PlayerJump : MonoBehaviour
 
     private void Update()
     {
-        if (!ps.stunned && Input.GetButtonDown("Jump" + " " + gameObject.name))
+        if (!ps.Stunned && Input.GetButtonDown("Jump" + " " + gameObject.name))
         {
             if (pc.grounded)     StartCoroutine(Jump(false));
             else if (doubleJump) StartCoroutine(Jump(true));

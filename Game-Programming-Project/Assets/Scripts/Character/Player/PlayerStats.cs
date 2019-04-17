@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class PlayerStats : Character
 {
-    [HideInInspector] public bool stunned = false;
-
     [Header("Setup")]
-    public Transform otherPlayer;
-    public Transform goal;
+    [SerializeField] private Transform otherPlayer;
+    [SerializeField] private Transform goal;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -41,7 +39,7 @@ public class PlayerStats : Character
         {
             StopCoroutine(coroutine);
             anim.SetBool("IsStunned", false);
-            stunned = false;
+            Stunned = false;
         }
     }
 
@@ -49,7 +47,7 @@ public class PlayerStats : Character
     {
         rb.velocity = Vector2.zero;
         anim.SetBool("IsStunned", true);
-        stunned = true;
+        Stunned = true;
 
         yield return new WaitForSeconds(stunTime);
 
@@ -66,4 +64,6 @@ public class PlayerStats : Character
     public float DistanceToOtherPlayer { get; private set; }
     public float DistanceToGoal { get; private set; }
     public float OtherPlayersDistanceToGoal { get; private set; }
+    public Transform OtherPlayer { get { return otherPlayer; } }
+    public bool Stunned { get; private set; }
 }

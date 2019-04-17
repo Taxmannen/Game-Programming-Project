@@ -2,7 +2,7 @@
 
 public class DangerousObject : MonoBehaviour
 {
-    public float stunTime;
+    [SerializeField] private float stunTime;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

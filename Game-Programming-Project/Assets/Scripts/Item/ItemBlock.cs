@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class ItemBlock : MonoBehaviour
 {
-    public float timeToSpawn;
+    [Header("Item")]
+    [SerializeField] private float timeToSpawn;
 
     [Header("Debug")]
-    public bool debugMode;
+    [SerializeField] private bool debugMode;
 
     private Collider2D[] colliders;
     private SpriteRenderer sr;
@@ -77,7 +78,7 @@ public class ItemBlock : MonoBehaviour
                 itemName = "Medium Drop Chance";
             }
             LootDropData data = Resources.Load<LootDropData>("Loot Drop Data/" + itemName);
-            data.DropItem(transform.position, other.transform, other.GetComponent<PlayerStats>().otherPlayer);
+            data.DropItem(transform.position, other.transform, other.GetComponent<PlayerStats>().OtherPlayer);
             Destroy(gameObject);
         }
     }

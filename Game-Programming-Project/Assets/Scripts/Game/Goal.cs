@@ -2,16 +2,14 @@
 
 public class Goal : MonoBehaviour
 {
-    public ScoreBoard scoreBoard;
-
-    private bool triggered;
+    [SerializeField] private ScoreBoard scoreBoard;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && !triggered)
-        {
+        if (other.tag == "Player")
+        { 
             scoreBoard.SetWinState(true, other.gameObject.name);
-            triggered = true;
+            Destroy(this);
         }
     }
 }

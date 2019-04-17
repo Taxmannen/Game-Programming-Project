@@ -5,17 +5,17 @@ public enum Direction { StartingPosition, EndingPosition }
 
 public class MovingObject : MonoBehaviour
 {
-    public float speed = 5;
-    public float delayBetweenSwitch = 0.25f;
-    public Vector3 startPos;
-    public Vector3 endPos;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private float delayBetweenSwitch = 0.25f;
+    [SerializeField] private Vector3 startPos;
+    [SerializeField] private Vector3 endPos;
 
     [Header("Blade")]
-    public Transform blade;
-    public float rotationSpeed;
+    [SerializeField] private Transform blade;
+    [SerializeField] private float rotationSpeed;
 
     [Header("Debug")]
-    public bool drawGizmos;
+    [SerializeField] private bool drawGizmos;
 
     private Vector3 pos;
     private Direction currentDir = Direction.StartingPosition;

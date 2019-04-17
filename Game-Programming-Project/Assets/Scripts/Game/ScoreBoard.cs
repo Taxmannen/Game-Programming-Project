@@ -4,30 +4,21 @@ using UnityEngine;
 public class ScoreBoard : MonoBehaviour
 {
     [Header("Timer")]
-    public float timer;
-
-    [Header("Goal")]
-    public Collider2D goalTrigger;
-
-    [Header("Timer")]
-    public TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     [Header("Popup")]
-    public GameObject popup;
-    public TextMeshProUGUI popupText;
+    [SerializeField] private GameObject popup;
+    [SerializeField] private TextMeshProUGUI popupText;
 
+    private float timer;
     private bool triggered;
 
     private void Update()
     {
-        if (timer > 0 && !triggered)
+        if (!triggered)
         {
-            timer -= Time.deltaTime;
-            timerText.text = "" + (int)(timer + 1);
-        }
-        else
-        {
-            if (!triggered) SetWinState(false, null);
+            timer += Time.deltaTime;
+            timerText.text = "" + (int)timer;
         }
     }
 
@@ -37,7 +28,6 @@ public class ScoreBoard : MonoBehaviour
 
         popupText.text = text;
         popup.SetActive(true);
-        goalTrigger.enabled = false;
         triggered = true;
         Time.timeScale = 0;
     }

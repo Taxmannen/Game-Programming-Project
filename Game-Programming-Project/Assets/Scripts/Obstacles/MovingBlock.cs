@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovingBlock : MonoBehaviour
 {
-    public float speed;
-    public Vector3 endPos;
+    [SerializeField] private float speed;
+    [SerializeField] private Vector3 endPos;
 
     private Vector3 pos;
     private bool go;
 
-    void Start()
+    private void Start()
     {
         pos = transform.position;
     }
@@ -28,10 +26,12 @@ public class MovingBlock : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player") go = true;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(transform.position + endPos, new Vector2(3, 3));

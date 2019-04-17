@@ -13,6 +13,7 @@ public class PlayerDash : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private PlayerController pc;
+    private PlayerStats ps;
     private Coroutine coroutine;
 
     private float lastDash;
@@ -23,6 +24,7 @@ public class PlayerDash : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
+        ps = GetComponent<PlayerStats>();
         lastDash = Time.time - dashCooldown;
 
         if (pc.GetFacingRight()) lastDirection = 1;
@@ -31,12 +33,12 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Slide" + " " + gameObject.name))
+        if (!ps.Stunned && Input.GetButtonDown("Slide" + " " + gameObject.name))
         {
             if (coroutine == null && Time.time - lastDash > dashCooldown)
             {
                 if (pc.grounded) coroutine = StartCoroutine(Slide());
-                else coroutine = StartCoroutine(Dash());
+                else             coroutine = StartCoroutine(Dash());
             }
         }
 
@@ -55,7 +57,6 @@ public class PlayerDash : MonoBehaviour
         float timer = 0;
         while (timer < dashTime)
         {
-
             float velocityX = (lastDirection * (dashSpeed * 50)) * Time.deltaTime;
             rb.velocity =  new Vector2(velocityX, rb.velocity.y);
 
@@ -78,6 +79,7 @@ public class PlayerDash : MonoBehaviour
         float timer = 0;
         while (timer < dashTime)
         {
+            timer += Time.deltaTime;
             yield return null;
         }
         anim.SetBool("IsDashing", false);
