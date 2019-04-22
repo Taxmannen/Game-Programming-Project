@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    [Header("Dash and Slide")]
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashTime;
-    [SerializeField] private float dashCooldown;
+    [Header("General")]
+    [SerializeField] private float cooldown = 0.2f;
+
+    [Header("Dash")]
+    [SerializeField] private float dashSpeed = 20;
+    [SerializeField] private float dashTime = 0.4f;
+
+    [Header("Slide")]
+    [SerializeField] private float slideSpeed = 17.5f;
+    [SerializeField] private float slideTime = 0.25f;
 
     //[Header("Debug")]
 
@@ -16,7 +22,7 @@ public class PlayerDash : MonoBehaviour
     private PlayerStats ps;
     private Coroutine coroutine;
 
-    private float lastDash;
+    private float previousActionTime;
     private float lastDirection;
 
     private void Start()
@@ -25,7 +31,7 @@ public class PlayerDash : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
         ps = GetComponent<PlayerStats>();
-        lastDash = Time.time - dashCooldown;
+        previousActionTime = Time.time - cooldown;
 
         if (pc.GetFacingRight()) lastDirection = 1;
         else                     lastDirection = -1;
@@ -33,12 +39,12 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
-        if (!ps.Stunned && Input.GetButtonDown("Slide" + " " + gameObject.name))
+        if (!ps.Stunned && Input.GetButtonDown("Dash" + " " + gameObject.name))
         {
-            if (coroutine == null && Time.time - lastDash > dashCooldown)
+            if (coroutine == null && Time.time - previousActionTime > cooldown)
             {
-                if (pc.grounded) coroutine = StartCoroutine(Slide());
-                else             coroutine = StartCoroutine(Dash());
+                if (pc.grounded) coroutine = StartCoroutine(Dash("IsSliding", slideSpeed, slideTime));
+                else             coroutine = StartCoroutine(Dash("IsDashing", dashSpeed, dashTime));
             }
         }
 
@@ -50,41 +56,25 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
-    private IEnumerator Slide()
+    private IEnumerator Dash(string animation, float speed, float actionTime)
     {
-        anim.SetBool("IsSliding", true);
+        anim.SetBool(animation, true);
 
         float timer = 0;
-        while (timer < dashTime)
+        while (timer < actionTime)
         {
-            float velocityX = (lastDirection * (dashSpeed * 50)) * Time.deltaTime;
-            rb.velocity =  new Vector2(velocityX, rb.velocity.y);
+            float velocityX = (lastDirection * (speed * 50)) * Time.deltaTime;
+            rb.velocity =  new Vector2(velocityX, rb.velocity.y * 0.15f);
 
             timer += Time.deltaTime;
 
-            if (Input.GetButtonUp("Slide" + " " + gameObject.name)) timer = dashTime;
+            if (Input.GetButtonUp("Dash" + " " + gameObject.name)) timer = actionTime;
 
             yield return null;
         }
-        anim.SetBool("IsSliding", false);
+        anim.SetBool(animation, false);
 
-        lastDash = Time.time;
-        coroutine = null;
-    }
-
-    private IEnumerator Dash()
-    {
-        anim.SetBool("IsDashing", true);
-
-        float timer = 0;
-        while (timer < dashTime)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        anim.SetBool("IsDashing", false);
-
-        lastDash = Time.time;
+        previousActionTime = Time.time;
         coroutine = null;
     }
 }

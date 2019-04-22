@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool hittingWall;
     private float x;
     private bool attacked;
+    private bool inverted;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
+        if (inverted) x = -x;
        
         grounded = Physics2D.OverlapBox(transform.position - groundOffset, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
@@ -66,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
         if (!hittingWall) anim.SetFloat("Speed", Mathf.Abs(x));
         else              anim.SetFloat("Speed", 0);
+
+        //if (Input.GetKeyDown(KeyCode.Q)) StartCoroutine(InvertedCurse(1));
     }
 
     private bool Flip()
@@ -101,6 +105,14 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsHit", false);
         attacked = false;
     }
+
+    private IEnumerator InvertedCurse(float invertedTime)
+    {
+        inverted = true;
+        yield return new WaitForSecondsRealtime(invertedTime);
+        inverted = false;
+    }
+
 
     private void OnDrawGizmos()
     {

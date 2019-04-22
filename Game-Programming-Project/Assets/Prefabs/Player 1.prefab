@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6217553721454463192}
   - component: {fileID: 6217553721454463198}
   - component: {fileID: 7744647938130040443}
+  - component: {fileID: 598186912}
   m_Layer: 9
   m_Name: Player 1
   m_TagString: Player
@@ -244,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a695d920e65cc344794bea1576db1936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunned: 0
   otherPlayer: {fileID: 0}
   goal: {fileID: 0}
 --- !u!114 &6217553721454463198
@@ -286,6 +286,23 @@ MonoBehaviour:
   fallMultiplier: 3
   lowJumpMultiplier: 4
   fallBeforeStunned: 5
+--- !u!114 &598186912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217553721454463207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4333f09ce4859c84bb87e80fdb958aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0.2
+  dashSpeed: 22
+  dashTime: 0.25
+  slideSpeed: 17.5
+  slideTime: 0.25
 --- !u!1 &7617122058711073275
 GameObject:
   m_ObjectHideFlags: 0

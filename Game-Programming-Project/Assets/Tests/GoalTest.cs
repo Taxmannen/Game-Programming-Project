@@ -7,8 +7,8 @@ namespace Tests
 {
     public class GoalTest
     {
-        private GameObject goal;
         private Goal goalScript;
+        private GameObject goal;
         private Collider2D collider;
 
         [SetUp]
