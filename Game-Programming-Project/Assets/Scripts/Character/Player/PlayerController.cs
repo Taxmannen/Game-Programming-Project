@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    #region Variables 
     [Header("Movement")]
     [SerializeField] private float groundMovementSpeed = 40;
     [SerializeField] private float airMovementSpeed = 30;
@@ -24,11 +26,16 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine invertedCoroutine;
     private Vector3 velocity = Vector3.zero;
+    private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
 
     private bool hittingWall;
     private float x;
     private bool attacked;
     private bool inverted;
+
+    [Header("Events")]
+    public UnityEvent OnLandEvent;
+    #endregion
 
     void Start()
     {
@@ -38,6 +45,8 @@ public class PlayerController : MonoBehaviour
         grounded = true;
 
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ps.OtherPlayer.GetComponent<Collider2D>());
+
+        if (OnLandEvent == null) OnLandEvent = new UnityEvent();
     }
 
     void Update()
@@ -45,15 +54,10 @@ public class PlayerController : MonoBehaviour
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
         if (inverted) x = -x;
        
-        grounded = Physics2D.OverlapBox(transform.position - groundOffset, new Vector3(0.55f, 0.1f, 0), 0, groundLayer);
+        grounded = Physics2D.OverlapBox(transform.position - groundOffset, overlapBoxSize, 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
 
-        if (raycastFrom != null)
-        {
-            Vector3 dir = new Vector3(0, 0, 0) { x = facingRight ? 0.15f : -0.15f };
-            Debug.DrawRay(raycastFrom.position, dir, Color.red);
-            hittingWall = Physics2D.Raycast(raycastFrom.position, dir, Mathf.Abs(dir.x), groundLayer);
-        }
+        CheckIfWallInfront();
     }
 
     private void FixedUpdate()
@@ -69,8 +73,16 @@ public class PlayerController : MonoBehaviour
 
         if (!hittingWall) anim.SetFloat("Speed", Mathf.Abs(x));
         else              anim.SetFloat("Speed", 0);
+    }
 
-        //if (Input.GetKeyDown(KeyCode.Q)) StartCoroutine(InvertedCurse(1));
+    private void CheckIfWallInfront()
+    {
+        if (raycastFrom != null)
+        {
+            Vector3 dir = new Vector3(0, 0, 0) { x = facingRight ? 0.15f : -0.15f };
+            Debug.DrawRay(raycastFrom.position, dir, Color.red);
+            hittingWall = Physics2D.Raycast(raycastFrom.position, dir, Mathf.Abs(dir.x), groundLayer);
+        }
     }
 
     private bool Flip()
@@ -90,21 +102,6 @@ public class PlayerController : MonoBehaviour
         if (!ps.Stunned) StartCoroutine(Hit(force, time));
     }
 
-    public void InvertPlayerControls(bool status)
-    {
-        if (status) invertedCoroutine = StartCoroutine(InvertedCurse(2));
-        else
-        {
-            if (invertedCoroutine != null)
-            {
-                StopCoroutine(invertedCoroutine);
-                invertedCoroutine = null;
-                inverted = false;
-
-            }
-        }
-    }
-
     private IEnumerator Hit(Vector2 force, float hitTime)
     {
         float timer = 0;
@@ -122,6 +119,20 @@ public class PlayerController : MonoBehaviour
         attacked = false;
     }
 
+    public void InvertPlayerControls(bool status)
+    {
+        if (status) invertedCoroutine = StartCoroutine(InvertedCurse(2));
+        else
+        {
+            if (invertedCoroutine != null)
+            {
+                StopCoroutine(invertedCoroutine);
+                invertedCoroutine = null;
+                inverted = false;
+            }
+        }
+    }
+
     private IEnumerator InvertedCurse(float invertedTime)
     {
         inverted = true;
@@ -130,10 +141,9 @@ public class PlayerController : MonoBehaviour
         invertedCoroutine = null;
     }
 
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position - groundOffset, new Vector3(0.55f, 0.1f, 0));
+        Gizmos.DrawCube(transform.position - groundOffset, overlapBoxSize);
     }
 
     public bool GetFacingRight() { return facingRight; }

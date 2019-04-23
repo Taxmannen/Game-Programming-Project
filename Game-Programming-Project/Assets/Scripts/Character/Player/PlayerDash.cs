@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
+    #region Variables
     [Header("General")]
     [SerializeField] private float cooldown = 0.2f;
 
@@ -14,8 +15,6 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float slideSpeed = 17.5f;
     [SerializeField] private float slideTime = 0.25f;
 
-    //[Header("Debug")]
-
     private Animator anim;
     private Rigidbody2D rb;
     private PlayerController pc;
@@ -24,6 +23,7 @@ public class PlayerDash : MonoBehaviour
 
     private float previousActionTime;
     private float lastDirection;
+    #endregion
 
     private void Start()
     {

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ItemBlock : MonoBehaviour
 {
+    #region Variables
     [Header("Item")]
     [SerializeField] private float timeToSpawn;
 
@@ -11,6 +12,7 @@ public class ItemBlock : MonoBehaviour
 
     private Collider2D[] colliders;
     private SpriteRenderer sr;
+    #endregion
 
     private void Start()
     {
@@ -26,15 +28,6 @@ public class ItemBlock : MonoBehaviour
     public void ShowBlock()
     {
         Invoke("Spawn", timeToSpawn);
-    }
-
-    private void Update()
-    {
-        if (Application.isEditor)
-        {
-            if (Input.GetKeyUp(KeyCode.T)) StartCoroutine(FadeTo(0.0f, 1.0f));
-            if (Input.GetKeyUp(KeyCode.F)) StartCoroutine(FadeTo(1.0f, 1.0f));
-        }
     }
 
     private void Spawn()
@@ -69,6 +62,8 @@ public class ItemBlock : MonoBehaviour
             PlayerStats playerStats = other.GetComponent<PlayerStats>();
 
             string itemName = "Low Drop Chance";
+
+            // Skall fixas vid balansering
             /*if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
             {
                 itemName = "Low Drop Chance";

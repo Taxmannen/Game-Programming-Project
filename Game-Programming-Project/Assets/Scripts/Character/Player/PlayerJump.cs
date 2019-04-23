@@ -84,7 +84,6 @@ public class PlayerJump : MonoBehaviour
             yield return null;
         }
         if (isDoubleJump) doubleJump = false;
-
         jumping = false;
     }
 

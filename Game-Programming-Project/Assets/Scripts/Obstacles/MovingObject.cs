@@ -5,6 +5,7 @@ public enum Direction { StartingPosition, EndingPosition }
 
 public class MovingObject : MonoBehaviour
 {
+    #region Variables
     [SerializeField] private float speed = 5;
     [SerializeField] private float delayBetweenSwitch = 0.25f;
     [SerializeField] private Vector3 startPos;
@@ -19,6 +20,7 @@ public class MovingObject : MonoBehaviour
 
     private Vector3 pos;
     private Direction currentDir = Direction.StartingPosition;
+    #endregion
 
     private void Start()
     {
@@ -53,8 +55,9 @@ public class MovingObject : MonoBehaviour
     {
         if (drawGizmos)
         {
-            Gizmos.DrawSphere(transform.position + startPos, 0.25f);
-            Gizmos.DrawSphere(transform.position + endPos, 0.25f);
+            Vector3 drawPos = Application.isPlaying ? pos : transform.position;
+            Gizmos.DrawSphere(drawPos + startPos, 0.25f);
+            Gizmos.DrawSphere(drawPos + endPos, 0.25f);
         }
     }
 }

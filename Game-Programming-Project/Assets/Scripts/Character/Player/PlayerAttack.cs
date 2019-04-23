@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    #region Variables
     [Header("Attack")]
     [SerializeField] private float attackTime;
     [SerializeField] private Vector2 attackForce;
@@ -16,7 +17,9 @@ public class PlayerAttack : MonoBehaviour
     private PlayerController pc;
     private PlayerStats ps;
     private Coroutine coroutine;
+
     private float attackDelay;
+    #endregion
 
     private void Start()
     {
