@@ -8,12 +8,7 @@ public class StunPlayer : Item
 
     private void Update()
     {
-        if (otherPlayer != null)
-        {
-            speedMultiplier += Time.deltaTime;
-            float step = (10 * Time.deltaTime) * speedMultiplier;
-            transform.position = Vector2.MoveTowards(transform.position, otherPlayer.position, step);
-        }
+        MoveTowardsPlayer(speedMultiplier);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

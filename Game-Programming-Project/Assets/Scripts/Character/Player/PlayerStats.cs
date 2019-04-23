@@ -8,6 +8,7 @@ public class PlayerStats : Character
     [SerializeField] private Transform goal;
 
     private Rigidbody2D rb;
+    private PlayerController pc;
     private Animator anim;
     private Coroutine coroutine;
 
@@ -21,11 +22,18 @@ public class PlayerStats : Character
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        pc = GetComponent<PlayerController>();
     }
 
     private void Update()
     {
         SetDistances();
+    }
+
+    public void Restore()
+    {
+        UnstunPlayer();
+        pc.InvertPlayerControls(false);
     }
 
     public void StunPlayer(float stunTime)
@@ -56,8 +64,8 @@ public class PlayerStats : Character
 
     public void SetDistances()
     {
-        DistanceToGoal             = Vector2.Distance(transform.position, goal.position);
-        DistanceToOtherPlayer      = Vector2.Distance(transform.position, otherPlayer.position);
+        DistanceToGoal = Vector2.Distance(transform.position, goal.position);
+        DistanceToOtherPlayer = Vector2.Distance(transform.position, otherPlayer.position);
         OtherPlayersDistanceToGoal = Vector2.Distance(otherPlayer.position, goal.position);
     }
 

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private PlayerStats ps;
 
+    private Coroutine invertedCoroutine;
     private Vector3 velocity = Vector3.zero;
 
     private bool hittingWall;
@@ -89,6 +90,21 @@ public class PlayerController : MonoBehaviour
         if (!ps.Stunned) StartCoroutine(Hit(force, time));
     }
 
+    public void InvertPlayerControls(bool status)
+    {
+        if (status) invertedCoroutine = StartCoroutine(InvertedCurse(2));
+        else
+        {
+            if (invertedCoroutine != null)
+            {
+                StopCoroutine(invertedCoroutine);
+                invertedCoroutine = null;
+                inverted = false;
+
+            }
+        }
+    }
+
     private IEnumerator Hit(Vector2 force, float hitTime)
     {
         float timer = 0;
@@ -111,6 +127,7 @@ public class PlayerController : MonoBehaviour
         inverted = true;
         yield return new WaitForSecondsRealtime(invertedTime);
         inverted = false;
+        invertedCoroutine = null;
     }
 
 

@@ -14,4 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: Stun Item
+    dropChance: 90
+  - item: Restore Item
+    dropChance: 80
+  - item: Teleport Item
+    dropChance: 70
+  - item: Inverted Controls Item
     dropChance: 0
