@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class PlayerStats : Character
 {
+    #region Variables
     [Header("Setup")]
     [SerializeField] private Transform otherPlayer;
     [SerializeField] private Transform goal;
+    [SerializeField] private ParticleSystem powerParticles;
 
     private Rigidbody2D rb;
     private PlayerController pc;
     private Animator anim;
     private Coroutine coroutine;
+
+    private bool activated;
+    private float distanceToStartLoserReward = 15;
+    #endregion
 
     public PlayerStats()
     {
@@ -62,11 +68,35 @@ public class PlayerStats : Character
         UnstunPlayer();
     }
 
-    public void SetDistances()
+    private void SetDistances()
     {
-        DistanceToGoal = Vector2.Distance(transform.position, goal.position);
-        DistanceToOtherPlayer = Vector2.Distance(transform.position, otherPlayer.position);
+        DistanceToGoal             = Vector2.Distance(transform.position, goal.position);
+        DistanceToOtherPlayer      = Vector2.Distance(transform.position, otherPlayer.position);
         OtherPlayersDistanceToGoal = Vector2.Distance(otherPlayer.position, goal.position);
+
+        if (OtherPlayersDistanceToGoal < DistanceToGoal)
+        {
+            if (DistanceToGoal - OtherPlayersDistanceToGoal > distanceToStartLoserReward)
+            {
+                ActivateLoserPowerup();
+            }
+        }
+        else if (DistanceToGoal < OtherPlayersDistanceToGoal)
+        {
+            if (activated) DeactiveLoserPowerUp();
+        }
+    }
+
+    private void ActivateLoserPowerup()
+    {
+        powerParticles.Play();
+        activated = true;
+    }
+
+    private void DeactiveLoserPowerUp()
+    {
+        powerParticles.Stop();
+        activated = false;
     }
 
     public float DistanceToOtherPlayer { get; private set; }
