@@ -2,6 +2,8 @@
 
 public class Item : MonoBehaviour
 {
+    public Sprite sprite;
+
     protected Transform player;
     protected Transform otherPlayer;
 

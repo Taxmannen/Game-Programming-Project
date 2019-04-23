@@ -11,11 +11,12 @@ public class PlayerStats : Character
 
     private Rigidbody2D rb;
     private PlayerController pc;
+    private PlayerJump pj;
     private Animator anim;
     private Coroutine coroutine;
 
     private bool activated;
-    private float distanceToStartLoserReward = 15;
+    private float distanceToStartLoserReward = 5; // 15?
     #endregion
 
     public PlayerStats()
@@ -29,6 +30,7 @@ public class PlayerStats : Character
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
+        pj = GetComponent<PlayerJump>();
     }
 
     private void Update()
@@ -90,12 +92,16 @@ public class PlayerStats : Character
     private void ActivateLoserPowerup()
     {
         powerParticles.Play();
+        pc.SetBonusSpeed(1.25f);
+        pj.SetBonusJumpPower(1.25f);
         activated = true;
     }
 
     private void DeactiveLoserPowerUp()
     {
         powerParticles.Stop();
+        pc.SetBonusSpeed(1);
+        pj.SetBonusJumpPower(1);
         activated = false;
     }
 

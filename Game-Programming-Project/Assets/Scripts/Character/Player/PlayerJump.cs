@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
+    #region Variables
     [Header("Jump")]
     [SerializeField] private float jumpPower = 30;
     [SerializeField] private float jumpTime = 0.05f;
@@ -23,7 +24,9 @@ public class PlayerJump : MonoBehaviour
 
     //FIXAS!!
     private float startFallPosY;
+    private float bonusJumpPower = 1;
     private bool jumping;
+    #endregion
 
     private void Start()
     {
@@ -77,7 +80,7 @@ public class PlayerJump : MonoBehaviour
         float timer = 0;
         while (Input.GetButton("Jump" + " " + gameObject.name) && timer < jumpTime)
         {
-            float velocityY = Mathf.Sqrt(jumpPower * Mathf.Abs(Physics2D.gravity.y));
+            float velocityY = Mathf.Sqrt((jumpPower * Mathf.Abs(Physics2D.gravity.y)) * bonusJumpPower);
             rb.velocity = new Vector2(rb.velocity.x, velocityY);
 
             timer += Time.deltaTime;
@@ -99,5 +102,10 @@ public class PlayerJump : MonoBehaviour
             //Debug.Log("Jump Multiplier");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    public void SetBonusJumpPower(float newBonusJumpPower)
+    {
+        bonusJumpPower = newBonusJumpPower;
     }
 }

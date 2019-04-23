@@ -59,12 +59,11 @@ public class ItemBlock : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PlayerStats playerStats = other.GetComponent<PlayerStats>();
-
             string itemName = "Low Drop Chance";
 
             // Skall fixas vid balansering
-            /*if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
+            /* PlayerStats playerStats = other.GetComponent<PlayerStats>();
+            if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
             {
                 itemName = "Low Drop Chance";
             }
@@ -77,7 +76,7 @@ public class ItemBlock : MonoBehaviour
                 itemName = "High Drop Chance";
             }*/
             LootDropData data = Resources.Load<LootDropData>("Loot Drop Data/" + itemName);
-            data.DropItem(transform.position, other.transform, other.GetComponent<PlayerStats>().OtherPlayer);
+            data.DropItem(other.transform);
             Destroy(gameObject);
         }
     }

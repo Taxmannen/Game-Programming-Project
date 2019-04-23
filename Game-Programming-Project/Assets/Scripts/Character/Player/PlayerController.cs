@@ -29,9 +29,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
 
     private bool hittingWall;
-    private float x;
     private bool attacked;
     private bool inverted;
+    private float x;
+    private float bonusSpeed = 1;
 
     [Header("Events")]
     public UnityEvent OnLandEvent;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed);
+        x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed) * bonusSpeed;
         if (inverted) x = -x;
        
         grounded = Physics2D.OverlapBox(transform.position - groundOffset, overlapBoxSize, 0, groundLayer);
@@ -139,6 +140,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(invertedTime);
         inverted = false;
         invertedCoroutine = null;
+    }
+
+    public void SetBonusSpeed(float newBonusSpeed)
+    {
+        bonusSpeed = newBonusSpeed;
     }
 
     private void OnDrawGizmos()
