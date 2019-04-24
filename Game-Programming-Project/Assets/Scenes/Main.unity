@@ -24358,6 +24358,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6021051252376414407, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021051252376414407, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021051252376414407, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6021051252376414406, guid: e4d3efa9858a8a34aa3b3db66773fd62,
         type: 3}
       propertyPath: m_RenderAlignment
@@ -24382,6 +24397,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EnableGPUInstancing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: TrailModule.dieWithParticles
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: VelocityModule.x.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: VelocityModule.y.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: VelocityModule.z.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159420681191257316, guid: e4d3efa9858a8a34aa3b3db66773fd62,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4d3efa9858a8a34aa3b3db66773fd62, type: 3}
