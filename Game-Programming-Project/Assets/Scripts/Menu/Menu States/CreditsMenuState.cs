@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 
-public class HighScoreMenuState : State<Menu>
+public class CreditsMenuState : State<Menu>
 {
     public GameObject menu;
 
-    private static HighScoreMenuState instance;
+    private static CreditsMenuState instance;
 
-    private HighScoreMenuState()
+    private CreditsMenuState()
     {
         if (instance != null) return;
         else instance = this;
     }
 
-    public static HighScoreMenuState Instance
+    public static CreditsMenuState Instance
     {
         get
         {
-            if (instance == null) new HighScoreMenuState();
+            if (instance == null) new CreditsMenuState();
             return instance;
         }
     }

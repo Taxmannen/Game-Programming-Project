@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StartMenuState : State<Menu>
 {
-    public GameObject text;
+    public GameObject menu;
 
     private static StartMenuState instance;
+
+    private EventSystem eventSystem;
+    private GameObject lastSelectedButton;
 
     private StartMenuState()
     {
@@ -23,19 +27,21 @@ public class StartMenuState : State<Menu>
 
     public override void EnterState(Menu type)
     {
-        Debug.Log("Entering Start Menu State");
-        text.SetActive(true);
+        if (eventSystem == null) eventSystem = EventSystem.current;
+        menu.SetActive(true);
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(lastSelectedButton);
     }
 
     public override void ExitState(Menu type)
     {
-        Debug.Log("Exiting Start Menu State");
-        text.SetActive(false);
+        menu.SetActive(false);
     }
 
     public override void UpdateState(Menu type)
     {
-        //Debug.Log("Updating Start Menu State");
+        if (eventSystem.currentSelectedGameObject == null) eventSystem.SetSelectedGameObject(lastSelectedButton);
+        else lastSelectedButton = eventSystem.currentSelectedGameObject;
         return;
     }
 }

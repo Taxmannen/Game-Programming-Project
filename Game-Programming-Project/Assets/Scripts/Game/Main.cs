@@ -10,10 +10,12 @@ public class Main : MonoBehaviour
     {
         if (Input.GetButtonDown("Restart"))
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
             if (Application.isEditor) Utils.ClearLogConsole();
         }
+
+        if (Input.GetButtonDown("Cancel")) SceneManager.LoadScene("Menu");
     }
 
     public static class Utils
