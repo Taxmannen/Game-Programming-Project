@@ -19,6 +19,7 @@ namespace Tests
             collider = goal.GetComponent<Collider2D>();
         }
 
+
         [UnityTest]
         public IEnumerator CheckIfGoalExistsInLevel()
         {
@@ -39,6 +40,7 @@ namespace Tests
             Assert.IsTrue(collider.isTrigger);
             yield return null;
         }
+
 
         [TearDown]
         public void TearDown()
