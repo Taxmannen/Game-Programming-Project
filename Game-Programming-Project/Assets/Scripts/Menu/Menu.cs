@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using StateMachine;
 
-public enum MenuState { StartMenu, LevelSelectMenu, HighScoreMenu, CreditsMenu}
+public enum MenuState { StartMenu, LevelSelectMenu, HighScoreMenu, CreditsMenu }
 
 public class Menu : MonoBehaviour
 {

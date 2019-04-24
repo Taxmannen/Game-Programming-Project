@@ -8,14 +8,15 @@ public class Main : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetButtonDown("Restart"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Time.timeScale = 1;
-            if (Application.isEditor) Utils.ClearLogConsole();
-        }
+        if (Input.GetButtonDown("Restart")) LoadScene(SceneManager.GetActiveScene().name);
+        if (Input.GetButtonDown("Cancel"))  LoadScene("Menu");
+    }
 
-        if (Input.GetButtonDown("Cancel")) SceneManager.LoadScene("Menu");
+    private void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
+        if (Application.isEditor) Utils.ClearLogConsole();
     }
 
     public static class Utils
