@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using StateMachine;
-using UnityEngine.SceneManagement;
 
-public enum MenuState { StartMenu, HighScoreMenu, CreditsMenu}
+public enum MenuState { StartMenu, LevelSelectMenu, HighScoreMenu, CreditsMenu}
 
 public class Menu : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class Menu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level 1");
+        ChangeMenuState(MenuState.LevelSelectMenu, LevelSelectMenuState.Instance);
     }
 
     public void HighScoreMenu()

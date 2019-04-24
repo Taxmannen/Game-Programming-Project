@@ -80,7 +80,7 @@ public class PlayerStats : Character
         {
             if (DistanceToGoal - OtherPlayersDistanceToGoal > distanceToStartLoserReward)
             {
-                ActivateLoserPowerup();
+                if (!activated) ActivateLoserPowerup();
             }
         }
         else if (DistanceToGoal < OtherPlayersDistanceToGoal)

@@ -1,26 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class StartMenuState : State<Menu>
+public class LevelSelectMenuState : State<Menu>
 {
-    public GameObject menu;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject firstSelectedButton;
 
-    private static StartMenuState instance;
+    private static LevelSelectMenuState instance;
 
     private EventSystem eventSystem;
     private GameObject lastSelectedButton;
 
-    private StartMenuState()
+    private LevelSelectMenuState()
     {
         if (instance != null) return;
         else instance = this;
     }
 
-    public static StartMenuState Instance
+    public static LevelSelectMenuState Instance
     {
         get
         {
-            if (instance == null) new StartMenuState();
+            if (instance == null) new LevelSelectMenuState();
             return instance;
         }
     }
@@ -29,8 +31,7 @@ public class StartMenuState : State<Menu>
     {
         if (eventSystem == null) eventSystem = EventSystem.current;
         menu.SetActive(true);
-        eventSystem.SetSelectedGameObject(null);
-        eventSystem.SetSelectedGameObject(lastSelectedButton);
+        eventSystem.SetSelectedGameObject(firstSelectedButton);
     }
 
     public override void ExitState(Menu type)
@@ -42,5 +43,12 @@ public class StartMenuState : State<Menu>
     {
         if (eventSystem.currentSelectedGameObject == null) eventSystem.SetSelectedGameObject(lastSelectedButton);
         else lastSelectedButton = eventSystem.currentSelectedGameObject;
+
+        if (Input.GetButtonDown("Cancel")) type.StartMenu();
+    }
+
+    public void StartLevel(string level)
+    {
+        SceneManager.LoadScene(level);
     }
 }
