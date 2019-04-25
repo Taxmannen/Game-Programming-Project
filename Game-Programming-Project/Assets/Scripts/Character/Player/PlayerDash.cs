@@ -61,8 +61,8 @@ public class PlayerDash : MonoBehaviour
         float timer = 0;
         while (timer < actionTime)
         {
-            float velocityX = (lastDirection * (speed * 50)) * Time.deltaTime;
-            Debug.Log(velocityX);
+            //float velocityX = (lastDirection * (speed * 50)) * Time.deltaTime;
+            float velocityX = lastDirection * speed;
             rb.velocity =  new Vector2(velocityX, rb.velocity.y * 0.15f);
 
             timer += Time.deltaTime;
