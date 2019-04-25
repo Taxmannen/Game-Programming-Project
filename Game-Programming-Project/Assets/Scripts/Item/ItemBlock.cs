@@ -59,26 +59,23 @@ public class ItemBlock : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            PlayerStats playerStats = other.GetComponent<PlayerStats>();
+
+            // Skall fixas vid balansering
             string itemName = "Low Drop Chance";
+            if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
+            {
+                itemName = "Low Drop Chance";
+            }
+            else if (playerStats.OtherPlayersDistanceToGoal - playerStats.DistanceToGoal < 15)
+            {
+                itemName = "Medium Drop Chance";
+            }
+            else itemName = "High Drop Chance";
+
             LootDropData data = Resources.Load<LootDropData>("Loot Drop Data/" + itemName);
             data.DropItem(other.transform);
             Destroy(gameObject);
         }
     }
-
-
-    // Skall fixas vid balansering
-    /* PlayerStats playerStats = other.GetComponent<PlayerStats>();
-    if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
-    {
-        itemName = "Low Drop Chance";
-    }
-    else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal)
-    {
-        itemName = "Medium Drop Chance";
-    }
-    else if (playerStats.DistanceToGoal > playerStats.OtherPlayersDistanceToGoal)
-    {
-        itemName = "High Drop Chance";
-    }*/
 }

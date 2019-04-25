@@ -8,15 +8,16 @@ public class LootDropData : ScriptableObject
     
     public void DropItem(Transform player)
     {
-        foreach (ItemStruct drop in items)
-        {
-            int randomDrop = UnityEngine.Random.Range(1, 101);
-            if (randomDrop > drop.dropChance)
+        Retry:
+            int itemRandom = UnityEngine.Random.Range(0, items.Length);
+            ItemStruct drop = items[itemRandom];
+            int dropChanceRandom = UnityEngine.Random.Range(1, 101);
+            if (dropChanceRandom <= drop.dropChance)
             {
                 player.GetComponent<PlayerInventory>().AddItem(Resources.Load<GameObject>("Items/" + drop.item));
                 return;
             }
-        }
+            else goto Retry;
     }
 
     public ItemStruct[] Items

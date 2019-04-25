@@ -24585,11 +24585,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Block
       objectReference: {fileID: 0}
-    - target: {fileID: 3944077265288003135, guid: bf3ea585249cdfb4e9c5d4e47d413dcb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3944077265288003120, guid: bf3ea585249cdfb4e9c5d4e47d413dcb,
         type: 3}
       propertyPath: m_LocalPosition.x
