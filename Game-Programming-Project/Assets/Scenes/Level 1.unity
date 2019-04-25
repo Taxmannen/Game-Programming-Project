@@ -24810,6 +24810,21 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 607614032}
+    - target: {fileID: 598186921, guid: 05608585699245a45b789bb859d58163, type: 3}
+      propertyPath: testItem
+      value: 
+      objectReference: {fileID: 1801427236170149772, guid: d6c51767a519f6b48a13ae1802ae2eb9,
+        type: 3}
+    - target: {fileID: 5122565236648935808, guid: 05608585699245a45b789bb859d58163,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122565236648935808, guid: 05608585699245a45b789bb859d58163,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05608585699245a45b789bb859d58163, type: 3}
 --- !u!4 &6217553721583430095 stripped
