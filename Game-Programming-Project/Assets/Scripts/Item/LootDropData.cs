@@ -11,6 +11,7 @@ public class LootDropData : ScriptableObject
         Retry:
             int itemRandom = UnityEngine.Random.Range(0, items.Length);
             ItemStruct drop = items[itemRandom];
+
             int dropChanceRandom = UnityEngine.Random.Range(1, 101);
             if (dropChanceRandom <= drop.dropChance)
             {
