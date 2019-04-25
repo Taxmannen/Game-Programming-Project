@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fcd94afcdf8444aa09b1950d66e1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: b7417e57d15a44b45aa17e5ece70b76e, type: 3}
+  sprite: {fileID: 21300000, guid: 4ea19e7fa323eb84daca513f1a41eeaf, type: 3}
   stunLength: 3
 --- !u!1001 &5072592451197754526
 PrefabInstance:

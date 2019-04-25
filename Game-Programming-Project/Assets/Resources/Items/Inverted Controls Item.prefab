@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2c69bbf4903ae44a9b35554f16c55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 011b36df656841f4aae73a984096b6a6, type: 3}
+  sprite: {fileID: 21300000, guid: fdc0cce5c6ebcb249becdc3de58a8156, type: 3}
 --- !u!1001 &8122648256285955539
 PrefabInstance:
   m_ObjectHideFlags: 0

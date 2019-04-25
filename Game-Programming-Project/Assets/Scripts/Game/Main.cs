@@ -9,7 +9,7 @@ public class Main : MonoBehaviour
     private void Update()
     {
         if (Input.GetButtonDown("Restart")) LoadScene(SceneManager.GetActiveScene().name);
-        if (Input.GetButtonDown("Cancel"))  LoadScene("Menu");
+        if (Input.GetButtonDown("Menu"))  LoadScene("Menu");
     }
 
     private void LoadScene(string sceneName)
