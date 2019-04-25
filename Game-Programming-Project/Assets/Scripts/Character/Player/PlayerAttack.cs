@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!ps.Stunned && Input.GetButtonDown("Attack" + " " + transform.parent.name))
+        if (!pc.UnableToMove && Input.GetButtonDown("Attack" + " " + transform.parent.name))
         {
             if (coroutine == null && pc.grounded) coroutine = StartCoroutine(Attack());
         }

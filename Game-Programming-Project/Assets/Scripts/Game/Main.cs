@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
+    public bool unlockedFrameRate = true;
+    public int frameRate = 60;
+
+    private void Start()
+    {
+        if (unlockedFrameRate) QualitySettings.vSyncCount = 1;
+        else                   QualitySettings.vSyncCount = 0;
+
+        Application.targetFrameRate = frameRate;
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Restart")) LoadScene(SceneManager.GetActiveScene().name);
