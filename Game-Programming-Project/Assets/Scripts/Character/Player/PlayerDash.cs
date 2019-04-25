@@ -39,7 +39,7 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
-        if (!pc.UnableToMove && Input.GetButtonDown("Dash" + " " + gameObject.name))
+        if (!ps.Stunned && Input.GetButtonDown("Dash" + " " + gameObject.name))
         {
             if (coroutine == null && Time.time - previousActionTime > cooldown)
             {

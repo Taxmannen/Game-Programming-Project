@@ -9,6 +9,7 @@ public class PlayerStats : Character
     [SerializeField] private Transform goal;
     [SerializeField] private ParticleSystem powerParticles;
 
+    private Rigidbody2D rb;
     private PlayerController pc;
     private PlayerJump pj;
     private Animator anim;
@@ -27,6 +28,7 @@ public class PlayerStats : Character
     private void Start()
     {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
         pj = GetComponent<PlayerJump>();
     }
@@ -53,14 +55,15 @@ public class PlayerStats : Character
         {
             StopCoroutine(coroutine);
             anim.SetBool("IsStunned", false);
-            pc.SetUnableToMove(false);
+            Stunned = false;
         }
     }
 
     private IEnumerator Stun(float stunTime)
     {
+        rb.velocity = Vector2.zero;
         anim.SetBool("IsStunned", true);
-        pc.SetUnableToMove(true);
+        Stunned = true;
 
         yield return new WaitForSeconds(stunTime);
 
@@ -106,4 +109,5 @@ public class PlayerStats : Character
     public float DistanceToGoal { get; private set; }
     public float OtherPlayersDistanceToGoal { get; private set; }
     public Transform OtherPlayer { get { return otherPlayer; } }
+    public bool Stunned { get; private set; }
 }

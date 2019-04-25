@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
 
     private bool hittingWall;
+    private bool attacked;
     private bool inverted;
     private bool unableToMove;
-
     private float x;
     private float bonusSpeed = 1;
 
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed) * bonusSpeed;
         if (inverted) x = -x;
-
+       
         grounded = Physics2D.OverlapBox(transform.position - groundOffset, overlapBoxSize, 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
 
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!unableToMove) Movement();
+        if (!ps.Stunned && !attacked && !unableToMove) Movement();
     }
 
     public void Movement()
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitPlayer(Vector2 force, float time)
     {
-        if (!unableToMove) StartCoroutine(Hit(force, time));
+        if (!ps.Stunned) StartCoroutine(Hit(force, time));
     }
 
     private IEnumerator Hit(Vector2 force, float hitTime)
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
         anim.SetBool("IsHit", true);
 
-        unableToMove = true;
+        attacked = true;
         while (timer < hitTime)
         {
             rb.velocity = force;
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         anim.SetBool("IsHit", false);
-        unableToMove = false;
+        attacked = false;
     }
 
     public void InvertPlayerControls(bool status)
@@ -162,7 +162,6 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Speed", 0);
         }
     }
-    public bool UnableToMove { get { return UnableToMove; } }
 
     public bool GetFacingRight() { return facingRight; }
 }
