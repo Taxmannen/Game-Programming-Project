@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
 public class PlayerController : MonoBehaviour
@@ -29,14 +28,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
 
     private bool hittingWall;
-    private bool attacked;
     private bool inverted;
     private bool unableToMove;
     private float x;
     private float bonusSpeed = 1;
-
-    [Header("Events")]
-    public UnityEvent OnLandEvent;
     #endregion
 
     void Start()
@@ -47,8 +42,6 @@ public class PlayerController : MonoBehaviour
         grounded = true;
 
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ps.OtherPlayer.GetComponent<Collider2D>());
-
-        if (OnLandEvent == null) OnLandEvent = new UnityEvent();
     }
 
     void Update()
@@ -64,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!ps.Stunned && !attacked && !unableToMove) Movement();
+        if (!unableToMove) Movement();
     }
 
     public void Movement()
@@ -101,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitPlayer(Vector2 force, float time)
     {
-        if (!ps.Stunned) StartCoroutine(Hit(force, time));
+        if (unableToMove) StartCoroutine(Hit(force, time));
     }
 
     private IEnumerator Hit(Vector2 force, float hitTime)
@@ -110,7 +103,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
         anim.SetBool("IsHit", true);
 
-        attacked = true;
+        unableToMove = true;
         while (timer < hitTime)
         {
             rb.velocity = force;
@@ -118,7 +111,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         anim.SetBool("IsHit", false);
-        attacked = false;
+        unableToMove = false;
     }
 
     public void InvertPlayerControls(bool status)
@@ -162,6 +155,8 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Speed", 0);
         }
     }
+
+    public bool UnableToMove { get { return unableToMove; } }
 
     public bool GetFacingRight() { return facingRight; }
 }

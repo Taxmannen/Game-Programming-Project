@@ -38,7 +38,7 @@ public class PlayerJump : MonoBehaviour
 
     private void Update()
     {
-        if (!ps.Stunned && Input.GetButtonDown("Jump" + " " + gameObject.name))
+        if (!pc.UnableToMove && Input.GetButtonDown("Jump" + " " + gameObject.name))
         {
             if (pc.grounded)     StartCoroutine(Jump(false));
             else if (doubleJump) StartCoroutine(Jump(true));

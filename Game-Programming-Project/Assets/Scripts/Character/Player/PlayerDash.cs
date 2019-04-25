@@ -18,7 +18,6 @@ public class PlayerDash : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private PlayerController pc;
-    private PlayerStats ps;
     private Coroutine coroutine;
 
     private float previousActionTime;
@@ -30,7 +29,6 @@ public class PlayerDash : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PlayerController>();
-        ps = GetComponent<PlayerStats>();
         previousActionTime = Time.time - cooldown;
 
         if (pc.GetFacingRight()) lastDirection = 1;
@@ -39,7 +37,7 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
-        if (!ps.Stunned && Input.GetButtonDown("Dash" + " " + gameObject.name))
+        if (!pc.UnableToMove && Input.GetButtonDown("Dash" + " " + gameObject.name))
         {
             if (coroutine == null && Time.time - previousActionTime > cooldown)
             {
