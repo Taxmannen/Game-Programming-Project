@@ -67,7 +67,7 @@ public class ItemBlock : MonoBehaviour
             {
                 itemName = "Low Drop Chance";
             }
-            else if (playerStats.OtherPlayersDistanceToGoal - playerStats.DistanceToGoal < 15)
+            else if (playerStats.OtherPlayersDistanceToGoal - playerStats.DistanceToGoal < 30)
             {
                 itemName = "Medium Drop Chance";
             }
