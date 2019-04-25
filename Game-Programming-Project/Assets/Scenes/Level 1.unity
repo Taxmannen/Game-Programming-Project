@@ -311,7 +311,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: NaN, w: 0}
+  m_BoundingSphereOverride: {x: 1.0899115e+27, y: 48.563725, z: 223.42578, w: 7.2143365e+22}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -24727,6 +24727,11 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 731847193}
+    - target: {fileID: 1711186378560667751, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9596886bcd4c173488a591d1fdd96979, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b4095d7a7637b443aecc95e3e9d66d8, type: 3}
 --- !u!1001 &6217553720873587576
@@ -24813,8 +24818,13 @@ PrefabInstance:
     - target: {fileID: 598186921, guid: 05608585699245a45b789bb859d58163, type: 3}
       propertyPath: testItem
       value: 
-      objectReference: {fileID: 1801427236170149772, guid: d6c51767a519f6b48a13ae1802ae2eb9,
+      objectReference: {fileID: 3111526616458389446, guid: 00111869e8d54574a8c3428202fd4f7e,
         type: 3}
+    - target: {fileID: 6217553721454463195, guid: 05608585699245a45b789bb859d58163,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3899c6a306869454b9d4e42811cfa550, type: 2}
     - target: {fileID: 5122565236648935808, guid: 05608585699245a45b789bb859d58163,
         type: 3}
       propertyPath: looping

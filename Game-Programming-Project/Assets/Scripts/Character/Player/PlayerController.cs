@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private bool hittingWall;
     private bool attacked;
     private bool inverted;
+    private bool unableToMove;
     private float x;
     private float bonusSpeed = 1;
 
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!ps.Stunned && !attacked) Movement();
+        if (!ps.Stunned && !attacked && !unableToMove) Movement();
     }
 
     public void Movement()
@@ -150,6 +151,16 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(transform.position - groundOffset, overlapBoxSize);
+    }
+
+    public void SetUnableToMove(bool state)
+    {
+        unableToMove = state;
+        if (state)
+        {
+            rb.velocity = Vector2.zero;
+            anim.SetFloat("Speed", 0);
+        }
     }
 
     public bool GetFacingRight() { return facingRight; }
