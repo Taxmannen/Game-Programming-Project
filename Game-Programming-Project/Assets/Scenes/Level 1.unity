@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &8885442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1711186378560667739, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4753103946044402095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &61417006
 GameObject:
   m_ObjectHideFlags: 0
@@ -22342,6 +22348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078229879}
   - component: {fileID: 1078229880}
+  - component: {fileID: 1078229881}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -22379,6 +22386,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62813f24c63d31649a9489533641b6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1078229881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078229878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c40b49304ac194e90fb1e12b7aebbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runThis: 1
+  player1: {fileID: 1329757939}
+  player2: {fileID: 8885442}
+  singleplayerCamera: {fileID: 7673750615220516966}
+  multiplayerCamera: {fileID: 1007511833}
 --- !u!1 &1140320502
 GameObject:
   m_ObjectHideFlags: 0
@@ -22750,6 +22774,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1329757939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6217553721454463207, guid: 05608585699245a45b789bb859d58163,
+    type: 3}
+  m_PrefabInstance: {fileID: 6217553720873587576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1334469297
 GameObject:
   m_ObjectHideFlags: 0
