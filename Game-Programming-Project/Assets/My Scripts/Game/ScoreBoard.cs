@@ -6,10 +6,6 @@ public class ScoreBoard : MonoBehaviour
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timerText;
 
-    [Header("Popup")]
-    [SerializeField] private GameObject popup;
-    [SerializeField] private TextMeshProUGUI popupText;
-
     private float timer;
     private bool triggered;
 
@@ -22,12 +18,13 @@ public class ScoreBoard : MonoBehaviour
         }
     }
 
+    public float GetTime()
+    {
+        return timer;
+    }
+
     public void SetWinState(bool state, string winner)
     {
-        string text = state ? "Winner :" + " " + winner : "You Lost";
-
-        popupText.text = text;
-        popup.SetActive(true);
         triggered = true;
         Time.timeScale = 0;
     }

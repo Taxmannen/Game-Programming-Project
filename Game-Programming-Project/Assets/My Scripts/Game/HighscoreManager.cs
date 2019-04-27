@@ -11,15 +11,13 @@ public class HighscoreManager : MonoBehaviour
     [SerializeField] private Transform container;
     [SerializeField] private Transform scorePrefab;
 
-    private readonly float maxHighscores = 10;
+    private readonly float maxHighscores = 6;
     private float rank;
 
     private void Awake()
     {
-        ClearHighscore(level.ToString(), true);
-        //SaveNewHighscore(747, "Daniel");
-
-        //for (int i = 0; i < 20; i++) SaveNewHighscore(747, "Daniel");
+        //ClearHighscore(level.ToString(), true);
+        //CreateTestHighscore();
 
         HighscoreSetup();
     }
@@ -42,12 +40,12 @@ public class HighscoreManager : MonoBehaviour
 
     private void SortHighscoreList(List<Highscore> highscores)
     {
-        //Sorterar listan med högsta scoret först
+        //Sorterar listan med högsta ranken först
         for (int i = 0; i < highscores.Count; i++)
         {
             for (int j = i + 1; j < highscores.Count; j++)
             {
-                if (highscores[j].score > highscores[i].score)
+                if (highscores[j].score < highscores[i].score)
                 {
                     Highscore tmp = highscores[i];
                     highscores[i] = highscores[j];
@@ -55,8 +53,8 @@ public class HighscoreManager : MonoBehaviour
                 }
             }
         }
-        
-        //Kollar ifall listan innehåller mer highscores än vad som kan visas och tar då bort dessa.
+
+        //Tar bort eventuella överblivna rekord
         if (highscores.Count > maxHighscores)
         {
             for (int i = (highscores.Count - 1);  i >= maxHighscores; i--)
@@ -66,10 +64,10 @@ public class HighscoreManager : MonoBehaviour
         }
     }
 
-    private void SaveNewHighscore(int score, string name)
+    protected void SaveNewHighscore(float score, string name, string level)
     {
         Highscore highscore = new Highscore { score = score, name = name };
-        string jSonString = PlayerPrefs.GetString(level.ToString());
+        string jSonString = PlayerPrefs.GetString(level);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jSonString);
         if (highscores == null) highscores = new Highscores(); //ifall objektet är null så får man error
 
@@ -78,7 +76,7 @@ public class HighscoreManager : MonoBehaviour
         SortHighscoreList(highscores.highscoreList); //Sorterar och tar bort eventuella överblivna rekord.
 
         string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString(level.ToString(), json);
+        PlayerPrefs.SetString(level, json);
         PlayerPrefs.Save();
     }
 
@@ -88,16 +86,30 @@ public class HighscoreManager : MonoBehaviour
 
         Transform current = Instantiate(scorePrefab, container);
         Color color = rank % 2 == 0 ? new Color(0, 0, 0, 0.2f) : new Color(255, 255, 255, 0.2f);
+        current.GetComponent<Image>().color = color;
         current.Find("Rank Text").GetComponent<TextMeshProUGUI>().text = rank.ToString();
         current.Find("Score Text").GetComponent<TextMeshProUGUI>().text = highScoreEntry.score.ToString();
         current.Find("Name Text").GetComponent<TextMeshProUGUI>().text = highScoreEntry.name;
-        current.Find("Background").GetComponent<Image>().color = color;
     }
 
     private void ClearHighscore(string key, bool deleteAll = false)
     {
         PlayerPrefs.DeleteKey(key);
         if (deleteAll) PlayerPrefs.DeleteAll();
+    }
+
+    private void CreateTestHighscore()
+    {
+        SaveNewHighscore(10, "AAA", level.ToString());
+        SaveNewHighscore(25, "BBB", level.ToString());
+        SaveNewHighscore(100, "CCC", level.ToString());
+        SaveNewHighscore(708, "DDD", level.ToString());
+        SaveNewHighscore(747, "EEE", level.ToString());
+        SaveNewHighscore(13, "FFF", level.ToString());
+        SaveNewHighscore(10000, "GGG", level.ToString());
+        SaveNewHighscore(65, "HHH", level.ToString());
+        SaveNewHighscore(8999, "III", level.ToString());
+        SaveNewHighscore(2, "JJJ", level.ToString());
     }
 }
 
@@ -107,10 +119,9 @@ public class Highscores
     public List<Highscore> highscoreList = new List<Highscore>();
 }
 
-
 [System.Serializable]
-public class Highscore
+public struct Highscore
 {
-    public int score;
+    public float score;
     public string name;
 }
