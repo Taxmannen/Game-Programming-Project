@@ -9,6 +9,7 @@ public class ItemBlock : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool debugMode;
+    [SerializeField] private string itemName;
 
     private Collider2D[] colliders;
     private SpriteRenderer sr;
@@ -59,22 +60,25 @@ public class ItemBlock : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PlayerStats playerStats = other.GetComponent<PlayerStats>();
-
-            // Skall fixas vid balansering
-            string itemName = "Low Drop Chance";
-            if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
+            AudioManager.Instance.Play("Item Box");
+            if (itemName.Length == 0)
             {
-                itemName = "Low Drop Chance";
-            }
-            else if (playerStats.OtherPlayersDistanceToGoal - playerStats.DistanceToGoal < 30)
-            {
-                itemName = "Medium Drop Chance";
-            }
-            else itemName = "High Drop Chance";
+                PlayerStats playerStats = other.GetComponent<PlayerStats>();
 
-            LootDropData data = Resources.Load<LootDropData>("Loot Drop Data/" + itemName);
-            data.DropItem(other.transform);
+                string itemName = "Low Drop Chance";
+                if (playerStats.DistanceToGoal < playerStats.OtherPlayersDistanceToGoal)
+                {
+                    itemName = "Low Drop Chance";
+                }
+                else if (playerStats.OtherPlayersDistanceToGoal - playerStats.DistanceToGoal < 30)
+                {
+                    itemName = "Medium Drop Chance";
+                }
+                else itemName = "High Drop Chance";
+                Resources.Load<LootDropData>("Loot Drop Data/" + itemName).DropItem(other.transform);
+            }
+            else other.GetComponent<PlayerInventory>().AddItem(Resources.Load<GameObject>("Items/" + itemName + " " + "Item"));
+
             Destroy(gameObject);
         }
     }
