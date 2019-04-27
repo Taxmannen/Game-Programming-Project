@@ -35,5 +35,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-Assets/-=Test=-/*
-Assets/-=Test=-.meta
+Game-Programming-Project/Assets/-=Test=-/*
+Game-Programming-Project/Assets/-=Test=-.meta
