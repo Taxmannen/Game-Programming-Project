@@ -139,7 +139,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3899c6a306869454b9d4e42811cfa550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 25
   m_Sprite: {fileID: 21300000, guid: 8e1ab1e53b53c34419b93014a06e7882, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -273,22 +273,6 @@ MonoBehaviour:
   groundOffset: {x: 0, y: 0.85, z: 0}
   raycastFrom: {fileID: 810788218}
   grounded: 0
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6217553721454463207}
-        m_MethodName: 
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &7744647938130040443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,9 +303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.2
-  dashSpeed: 25
+  dashSpeed: 20
   dashTime: 0.3
-  slideSpeed: 20
+  slideSpeed: 15
   slideTime: 0.25
 --- !u!114 &598186921
 MonoBehaviour:
@@ -337,8 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   empty: {fileID: 21300000, guid: 7d558f40295c2104aa7f9423728466fd, type: 3}
-  testItem: {fileID: 8568895092335761226, guid: 732659bdf30d34648a7d8ec58bb541da,
-    type: 3}
+  testItem: {fileID: 0}
 --- !u!1 &7617122058711073275
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +547,11 @@ PrefabInstance:
     - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348371, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

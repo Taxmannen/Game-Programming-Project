@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9596886bcd4c173488a591d1fdd96979, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,11 +194,6 @@ MonoBehaviour:
   groundOffset: {x: 0, y: 0.85, z: 0}
   raycastFrom: {fileID: 4753103946472009158}
   grounded: 0
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &3066087814259596999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,10 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2c505a6a55684cac241f34a6720d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 9
-  jumpTime: 0.05
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  jumpPower: 9.5
+  jumpTime: 0.15
+  fallMultiplier: 3
+  lowJumpMultiplier: 4
   fallBeforeStunned: 5
 --- !u!114 &5316460408653625626
 MonoBehaviour:
@@ -247,8 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   empty: {fileID: 21300000, guid: 7d558f40295c2104aa7f9423728466fd, type: 3}
-  testItem: {fileID: 3111526616458389446, guid: 00111869e8d54574a8c3428202fd4f7e,
-    type: 3}
+  testItem: {fileID: 0}
 --- !u!1 &2901196655823882567
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,20 +403,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711186378560667744}
     m_Modifications:
-    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+    - target: {fileID: 1251492565869348365, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
+      propertyPath: m_Name
+      value: Healing Particle
       objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
@@ -441,8 +425,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348371, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
