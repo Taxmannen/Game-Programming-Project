@@ -4,8 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - entryContainer: {instanceID: 0}
-  - entryTemplate: {fileID: 17552926881916243, guid: a18cb1dc9451cb9468f0992f34d7caed,
+  - container: {instanceID: 0}
+  - scorePrefab: {fileID: 17552926881916243, guid: a18cb1dc9451cb9468f0992f34d7caed,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
