@@ -56,6 +56,8 @@ public class PlayerDash : MonoBehaviour
 
     private IEnumerator Dash(string animation, float speed, float actionTime)
     {
+        float pitch = animation == "IsSliding" ? 0.8f : 1;
+        AudioManager.Instance.Play("Dash", 1.2f, pitch);
         anim.SetBool(animation, true);
 
         float timer = 0;

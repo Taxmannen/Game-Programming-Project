@@ -7,7 +7,8 @@ public class Goal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
-        { 
+        {
+            AudioManager.Instance.Play("Victory");
             scoreBoard.SetWinState(true, other.gameObject.name);
             Destroy(this);
         }

@@ -74,6 +74,8 @@ public class PlayerJump : MonoBehaviour
 
     private IEnumerator Jump(bool isDoubleJump)
     {
+        float pitch = isDoubleJump ? 1.1f : 1;
+        AudioManager.Instance.Play("Jump", 1.2f, pitch);
         rb.velocity = Vector2.zero;
         jumping = true;
 

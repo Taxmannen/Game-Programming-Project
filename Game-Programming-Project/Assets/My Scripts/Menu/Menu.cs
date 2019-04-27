@@ -22,21 +22,25 @@ public class Menu : MonoBehaviour
 
     public void PlayGame()
     {
+        PlaySound();
         ChangeMenuState(MenuState.LevelSelectMenu, LevelSelectMenuState.Instance);
     }
 
     public void HighScoreMenu()
     {
+        PlaySound();
         ChangeMenuState(MenuState.HighScoreMenu, HighScoreMenuState.Instance);
     }
 
     public void CreditsMenu()
     {
+        PlaySound();
         ChangeMenuState(MenuState.CreditsMenu, CreditsMenuState.Instance);
     }
 
     public void ExitGame()
     {
+        PlaySound();
         Application.Quit();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -45,7 +49,13 @@ public class Menu : MonoBehaviour
 
     public void StartMenu()
     {
+        PlaySound();
         ChangeMenuState(MenuState.StartMenu, StartMenuState.Instance);
+    }
+
+    public void PlaySound()
+    {
+        AudioManager.Instance.Play("Button Press");
     }
 
     private void ChangeMenuState(MenuState newEnumState, State<Menu> newState)

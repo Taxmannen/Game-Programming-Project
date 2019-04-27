@@ -49,6 +49,7 @@ public class LevelSelectMenuState : State<Menu>
 
     public void StartLevel(string level)
     {
+        AudioManager.Instance.Play("Button Press");
         SceneManager.LoadScene(level);
     }
 }

@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitPlayer(Vector2 force, float time)
     {
-        if (unableToMove) StartCoroutine(Hit(force, time));
+        if (!unableToMove) StartCoroutine(Hit(force, time));
     }
 
     private IEnumerator Hit(Vector2 force, float hitTime)
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         float timer = 0;
         rb.velocity = Vector2.zero;
         anim.SetBool("IsHit", true);
-
+        AudioManager.Instance.Play("Hit", pitch: 1f);
         unableToMove = true;
         while (timer < hitTime)
         {
@@ -114,9 +114,9 @@ public class PlayerController : MonoBehaviour
         unableToMove = false;
     }
 
-    public void InvertPlayerControls(bool status)
+    public void InvertPlayerControls(bool status, float time = 0)
     {
-        if (status) invertedCoroutine = StartCoroutine(InvertedCurse(2));
+        if (status) invertedCoroutine = StartCoroutine(InvertedCurse(time));
         else
         {
             if (invertedCoroutine != null)

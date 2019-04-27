@@ -2,7 +2,14 @@
 
 public class InvertedControls : Item
 {
+    [SerializeField] private float effectTime = 3;
+
     private float speedMultiplier = 1;
+
+    private void Start()
+    {
+        AudioManager.Instance.Play("Inverted");    
+    }
 
     private void Update()
     {
@@ -13,7 +20,8 @@ public class InvertedControls : Item
     {
         if (otherPlayer != null && other.gameObject.name == otherPlayer.name)
         {
-            other.GetComponent<PlayerController>().InvertPlayerControls(true);
+            AudioManager.Instance.Play("Hit", pitch: 1.2f);
+            other.GetComponent<PlayerController>().InvertPlayerControls(true, effectTime);
             base.UseItem();
         }
     }
