@@ -1,13 +1,15 @@
 {
     "name": "Tests",
     "references": [
-        "GameScripts",
-        "Cinemachine"
+        "GUID:fe17dc9d7e42d3346905557fbdb69af2",
+        "GUID:4307f53044263cf4b835bd812fc161a4"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

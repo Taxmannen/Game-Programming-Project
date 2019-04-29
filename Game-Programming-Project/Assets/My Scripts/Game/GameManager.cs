@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool runThis;
 
     [Header("Setup")]
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
+    [SerializeField] private Transform player1;
+    [SerializeField] private Transform player2;
     [SerializeField] private GameObject singleplayerCamera;
     [SerializeField] private GameObject multiplayerCamera;
 
@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
     {
         if (runThis)
         {
-            player1.transform.position = new Vector3(-5, 0.8f, 0);
-            player2.transform.position = new Vector3(5, 0.8f, 0);
-            player2.transform.localScale = new Vector3(-1, 1, 1);
+            player1.position = new Vector3(-5, 0.8f, 0);
+            player2.position = new Vector3(5, 0.8f, 0);
+            player2.localScale = new Vector3(-1, 1, 1);
 
             singleplayerCamera.SetActive(false);
-            multiplayerCamera.SetActive(true);
+
+            Instantiate(multiplayerCamera).GetComponent<Camera>().SetTargetTransform(player1, player2);
+            
 
             SpriteRenderer sr1 = player1.GetComponent<SpriteRenderer>();
             SpriteRenderer sr2 = player2.GetComponent<SpriteRenderer>();
