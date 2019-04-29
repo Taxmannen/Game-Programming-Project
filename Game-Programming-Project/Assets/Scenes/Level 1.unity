@@ -21188,6 +21188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Block Debug
       objectReference: {fileID: 0}
+    - target: {fileID: 6356778703734315539, guid: 6bc76c46a3f429c4bb3a669bc9b62264,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6356778703734315548, guid: 6bc76c46a3f429c4bb3a669bc9b62264,
         type: 3}
       propertyPath: m_LocalPosition.x
