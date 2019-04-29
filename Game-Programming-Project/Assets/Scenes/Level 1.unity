@@ -24966,6 +24966,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6957277154183256638, guid: a8edf528de893b04fbe30adf3c819d31,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957277154183256638, guid: a8edf528de893b04fbe30adf3c819d31,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957277154183256638, guid: a8edf528de893b04fbe30adf3c819d31,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957277154183256638, guid: a8edf528de893b04fbe30adf3c819d31,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.48235294
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8edf528de893b04fbe30adf3c819d31, type: 3}
 --- !u!1001 &7554339229048931282
@@ -25424,23 +25444,23 @@ PrefabInstance:
     - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.40392157
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.40392157
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.40392157
+      value: 0.4811321
       objectReference: {fileID: 0}
     - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_Type
@@ -25470,6 +25490,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PreserveAspect
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.7058824
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b758e1a231328d24983e5d9465447c0d, type: 3}

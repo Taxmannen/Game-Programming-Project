@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class StartMenuState : State<Menu>
@@ -9,6 +10,9 @@ public class StartMenuState : State<Menu>
 
     private EventSystem eventSystem;
     private GameObject lastSelectedButton;
+
+    /*public Transform buttons;
+    private int index;*/
 
     private StartMenuState()
     {
@@ -42,5 +46,16 @@ public class StartMenuState : State<Menu>
     {
         if (eventSystem.currentSelectedGameObject == null) eventSystem.SetSelectedGameObject(lastSelectedButton);
         else lastSelectedButton = eventSystem.currentSelectedGameObject;
+        /*index = lastSelectedButton.transform.GetSiblingIndex();
+        ChangeFontColor(buttons);*/
     }
+
+    /*public void ChangeFontColor(Transform buttons)
+    {
+        foreach (Transform current in buttons)
+        {
+            if (current.GetSiblingIndex() == index) current.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
+            else current.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+        }
+    }*/
 }

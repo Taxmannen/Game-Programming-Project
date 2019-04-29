@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMovementSpeed: 40
-  airMovementSpeed: 30
-  smoothing: 0.05
+  airMovementSpeed: 37.5
+  smoothing: 0.075
   facingRight: 0
   groundLayer:
     serializedVersion: 2
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.2
-  dashSpeed: 25
+  dashSpeed: 20
   dashTime: 0.3
-  slideSpeed: 20
+  slideSpeed: 15
   slideTime: 0.25
 --- !u!114 &1211703787711418563
 MonoBehaviour:
@@ -403,6 +403,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711186378560667744}
     m_Modifications:
+    - target: {fileID: 1251492565869348365, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Healing Particle
+      objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,11 +463,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1251492565869348365, guid: 6f317f1bd11a65942b3ba9310422e0d1,
-        type: 3}
-      propertyPath: m_Name
-      value: Healing Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348371, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
       propertyPath: playOnAwake
@@ -483,6 +483,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711186378560667744}
     m_Modifications:
+    - target: {fileID: 4527092186766594815, guid: 56950aa1af2a59949857d85e7fb03b9e,
+        type: 3}
+      propertyPath: m_Name
+      value: Extra Power Particle
+      objectReference: {fileID: 0}
     - target: {fileID: 4527092186766594814, guid: 56950aa1af2a59949857d85e7fb03b9e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,11 +542,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527092186766594815, guid: 56950aa1af2a59949857d85e7fb03b9e,
-        type: 3}
-      propertyPath: m_Name
-      value: Extra Power Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56950aa1af2a59949857d85e7fb03b9e, type: 3}
