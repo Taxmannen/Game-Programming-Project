@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
@@ -54,6 +54,15 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
+    public void StopDash()
+    {
+        if (coroutine != null) StopCoroutine(coroutine);
+        anim.SetBool("IsSliding", false);
+        anim.SetBool("IsDashing", false);
+        previousActionTime = Time.time;
+        coroutine = null;
+    }
+
     private IEnumerator Dash(string animation, float speed, float actionTime)
     {
         float pitch = animation == "IsSliding" ? 0.8f : 1;
@@ -73,9 +82,6 @@ public class PlayerDash : MonoBehaviour
 
             yield return null;
         }
-        anim.SetBool(animation, false);
-
-        previousActionTime = Time.time;
-        coroutine = null;
+        StopDash();
     }
 }

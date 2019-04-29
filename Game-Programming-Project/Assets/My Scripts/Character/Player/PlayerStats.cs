@@ -11,11 +11,12 @@ public class PlayerStats : Character
 
     private PlayerController pc;
     private PlayerJump pj;
+    private PlayerDash pd;
     private Animator anim;
     private Coroutine coroutine;
 
     private bool activated;
-    private float distanceToStartLoserReward = 5; // 15?
+    private float distanceToStartLoserReward = 7.5f; // 15?
     #endregion
 
     public PlayerStats()
@@ -29,6 +30,7 @@ public class PlayerStats : Character
         anim = GetComponent<Animator>();
         pc = GetComponent<PlayerController>();
         pj = GetComponent<PlayerJump>();
+        pd = GetComponent<PlayerDash>();
     }
 
     private void Update()
@@ -61,6 +63,7 @@ public class PlayerStats : Character
     {
         anim.SetBool("IsStunned", true);
         pc.SetUnableToMove(true);
+        pd.StopDash();
 
         yield return new WaitForSeconds(stunTime);
 
