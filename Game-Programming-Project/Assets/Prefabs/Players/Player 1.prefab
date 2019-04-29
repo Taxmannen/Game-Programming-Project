@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 7617122058711073268}
   m_Layer: 9
   m_Name: Attack Arm
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,11 +403,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6217553721454463196}
     m_Modifications:
-    - target: {fileID: 4527092186766594815, guid: 56950aa1af2a59949857d85e7fb03b9e,
-        type: 3}
-      propertyPath: m_Name
-      value: Extra Power Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 4527092186766594814, guid: 56950aa1af2a59949857d85e7fb03b9e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -468,6 +463,11 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Position.z
       value: -0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 4527092186766594815, guid: 56950aa1af2a59949857d85e7fb03b9e,
+        type: 3}
+      propertyPath: m_Name
+      value: Extra Power Particle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56950aa1af2a59949857d85e7fb03b9e, type: 3}
 --- !u!4 &1782063261531499911 stripped
@@ -489,11 +489,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6217553721454463196}
     m_Modifications:
-    - target: {fileID: 1251492565869348365, guid: 6f317f1bd11a65942b3ba9310422e0d1,
-        type: 3}
-      propertyPath: m_Name
-      value: Healing Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348370, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -548,6 +543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251492565869348365, guid: 6f317f1bd11a65942b3ba9310422e0d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Healing Particle
       objectReference: {fileID: 0}
     - target: {fileID: 1251492565869348371, guid: 6f317f1bd11a65942b3ba9310422e0d1,
         type: 3}

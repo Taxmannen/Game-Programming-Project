@@ -23,9 +23,9 @@ public class ScoreBoard : MonoBehaviour
         return timer;
     }
 
-    public void SetWinState(bool state, string winner)
+    public void SetWinState()
     {
         triggered = true;
-        Time.timeScale = 0;
+        MyUtils.PauseGame(true);
     }
 }

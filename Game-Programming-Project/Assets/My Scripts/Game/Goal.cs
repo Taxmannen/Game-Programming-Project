@@ -10,8 +10,9 @@ public class Goal : MonoBehaviour
         if (other.tag == "Player")
         {
             AudioManager.Instance.Play("Victory");
-            scoreBoard.SetWinState(true, other.gameObject.name);
+            scoreBoard.SetWinState();
             HighscorePopup highscorePopup = Instantiate(winnerPopup).GetComponent<HighscorePopup>();
+            highscorePopup.SetHeaderText(other.gameObject.name);
             highscorePopup.Time = scoreBoard.GetTime();
             Destroy(this);
         }

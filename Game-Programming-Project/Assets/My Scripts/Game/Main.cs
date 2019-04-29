@@ -8,12 +8,14 @@ public class Main : MonoBehaviour
 {
     public int frameRate;
     public bool lockedFrameRate;
+    public bool deleteHighScores;
 
     private void Start()
     {
+        if (deleteHighScores) PlayerPrefs.DeleteAll();
         if (lockedFrameRate) QualitySettings.vSyncCount = 0;
         else                 QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = frameRate;    
+        Application.targetFrameRate = frameRate;
     }
 
     private void Update()
@@ -25,7 +27,7 @@ public class Main : MonoBehaviour
     private void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1;
+        MyUtils.PauseGame(false);
         if (Application.isEditor) Utils.ClearLogConsole();
     }
 

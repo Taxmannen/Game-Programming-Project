@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class HighscorePopup : HighscoreManager
 {
     [SerializeField] private GameObject inputField;
+    [SerializeField] private TextMeshProUGUI headerText;
 
     private EventSystem eventSystem;
     public float Time { get; set; }
@@ -12,6 +14,11 @@ public class HighscorePopup : HighscoreManager
     private void Start()
     {
         eventSystem = EventSystem.current;  
+    }
+
+    public void SetHeaderText(string winner)
+    {
+        headerText.text = "Winner:" + " " + winner;
     }
 
     private void Update()
@@ -23,7 +30,8 @@ public class HighscorePopup : HighscoreManager
     {
         if (Input.GetButtonDown("Submit") && name.Length > 0 && Time > 0)
         {
-            SaveNewHighscore(Utils.RemoveDecimals(Time, 3), name, Utils.RemoveSpaceFromString(SceneManager.GetActiveScene().name));
+            SaveNewHighscore(MyUtils.RemoveDecimals(Time, 3), name, MyUtils.RemoveSpaceFromString(SceneManager.GetActiveScene().name));
+            MyUtils.PauseGame(false);
             SceneManager.LoadScene("Menu");
         }
     }

@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     {
         if (runThis)
         {
-            player1.transform.position = new Vector3(-4, 0.8f, 0);
-            player2.transform.position = new Vector3(4, 0.8f, 0);
+            player1.transform.position = new Vector3(-5, 0.8f, 0);
+            player2.transform.position = new Vector3(5, 0.8f, 0);
             player2.transform.localScale = new Vector3(-1, 1, 1);
 
             singleplayerCamera.SetActive(false);
