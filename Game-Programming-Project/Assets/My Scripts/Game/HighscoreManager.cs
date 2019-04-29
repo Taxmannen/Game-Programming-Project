@@ -19,7 +19,7 @@ public class HighscoreManager : MonoBehaviour
         //ClearHighscore(level.ToString(), true);
         //CreateTestHighscore();
 
-        HighscoreSetup();
+        if (scorePrefab != null) HighscoreSetup();
     }
 
     private void HighscoreSetup()
@@ -94,8 +94,8 @@ public class HighscoreManager : MonoBehaviour
 
     private void ClearHighscore(string key, bool deleteAll = false)
     {
-        PlayerPrefs.DeleteKey(key);
         if (deleteAll) PlayerPrefs.DeleteAll();
+        else           PlayerPrefs.DeleteKey(key);
     }
 
     private void CreateTestHighscore()
