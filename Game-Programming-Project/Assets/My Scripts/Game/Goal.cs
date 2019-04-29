@@ -2,7 +2,7 @@
 
 public class Goal : MonoBehaviour
 {
-    [SerializeField] private ScoreBoard scoreBoard;
+    [SerializeField] private LevelTimer levelTimer;
     [SerializeField] private GameObject winnerPopup;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -10,10 +10,10 @@ public class Goal : MonoBehaviour
         if (other.tag == "Player")
         {
             AudioManager.Instance.Play("Victory");
-            scoreBoard.SetWinState();
+            levelTimer.SetWinState();
             HighscorePopup highscorePopup = Instantiate(winnerPopup).GetComponent<HighscorePopup>();
             highscorePopup.SetHeaderText(other.gameObject.name);
-            highscorePopup.Time = scoreBoard.GetTime();
+            highscorePopup.Time = levelTimer.GetTime();
             Destroy(this);
         }
     }

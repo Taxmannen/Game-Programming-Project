@@ -179,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 1711186378560667744, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1711186378560667744, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
         type: 3}
@@ -9068,7 +9068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200810884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 2.0493612, z: -12}
+  m_LocalPosition: {x: -5, y: 2.0493612, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1966408759}
@@ -9178,7 +9178,7 @@ PrefabInstance:
     - target: {fileID: 6217553721454463196, guid: 05608585699245a45b789bb859d58163,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6217553721454463196, guid: 05608585699245a45b789bb859d58163,
         type: 3}
@@ -9707,6 +9707,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3676713264989388558, guid: c8671f5308548be4cb97eadcdd678636,
         type: 3}
+    - target: {fileID: 2098525906569191655, guid: ffe35805b8e7abe4bb9a402262ee4ffb,
+        type: 3}
+      propertyPath: levelTimer
+      value: 
+      objectReference: {fileID: 306016264}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe35805b8e7abe4bb9a402262ee4ffb, type: 3}
 --- !u!4 &1998952148 stripped

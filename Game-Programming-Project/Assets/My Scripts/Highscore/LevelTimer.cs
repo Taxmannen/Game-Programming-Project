@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class ScoreBoard : MonoBehaviour
+public class LevelTimer : MonoBehaviour
 {
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timerText;
