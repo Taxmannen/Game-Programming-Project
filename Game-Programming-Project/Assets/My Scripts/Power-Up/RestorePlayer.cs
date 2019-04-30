@@ -17,12 +17,8 @@ public class RestorePlayer : Item
             if (particle.gameObject.name.Contains("Healing")) ps = particle;
         }
         ps.Play();
+        playerStats.Restore(effectTime);
         Invoke("DestroyObject", effectTime);
-    }
-
-    private void Update()
-    {
-        playerStats.Restore();
     }
 
     private void DestroyObject()

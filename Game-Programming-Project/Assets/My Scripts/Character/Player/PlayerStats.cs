@@ -17,6 +17,9 @@ public class PlayerStats : Character
 
     private bool activated;
     private float distanceToStartLoserReward = 7.5f; // 15?
+
+    public bool restoring { get; private set; }
+
     #endregion
 
     public PlayerStats()
@@ -38,15 +41,23 @@ public class PlayerStats : Character
         SetDistances();
     }
 
-    public void Restore()
+    public void Restore(float time)
+    {
+        StartCoroutine(Restoring(time));
+    }
+
+    private IEnumerator Restoring(float time)
     {
         UnstunPlayer();
         pc.InvertPlayerControls(false);
+        restoring = true;
+        yield return new WaitForSecondsRealtime(time);
+        restoring = false;
     }
 
     public void StunPlayer(float stunTime)
     {
-        coroutine = StartCoroutine(Stun(stunTime));
+        if (!restoring) coroutine = StartCoroutine(Stun(stunTime));
     }
 
     public void UnstunPlayer()

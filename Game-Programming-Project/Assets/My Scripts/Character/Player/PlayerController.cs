@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     public void InvertPlayerControls(bool status, float time = 0)
     {
-        if (status) invertedCoroutine = StartCoroutine(InvertedCurse(time));
+        if (status && !ps.restoring) invertedCoroutine = StartCoroutine(InvertedCurse(time));
         else
         {
             if (invertedCoroutine != null)
