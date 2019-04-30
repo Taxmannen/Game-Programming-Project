@@ -7,23 +7,23 @@ public class LevelSelectMenuState : State<Menu>
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject firstSelectedButton;
 
-    private static LevelSelectMenuState instance;
+    private static LevelSelectMenuState INSTANCE;
 
     private EventSystem eventSystem;
     private GameObject lastSelectedButton;
 
     private LevelSelectMenuState()
     {
-        if (instance != null) return;
-        else instance = this;
+        if (INSTANCE != null) return;
+        else INSTANCE = this;
     }
 
     public static LevelSelectMenuState Instance
     {
         get
         {
-            if (instance == null) new LevelSelectMenuState();
-            return instance;
+            if (INSTANCE == null) new LevelSelectMenuState();
+            return INSTANCE;
         }
     }
 
@@ -49,7 +49,7 @@ public class LevelSelectMenuState : State<Menu>
 
     public void StartLevel(string level)
     {
-        AudioManager.Instance.Play("Button Press");
+        AudioManager.INSTANCE.Play("Button Press");
         SceneManager.LoadScene(level);
     }
 }

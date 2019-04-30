@@ -4,20 +4,20 @@ public class CreditsMenuState : State<Menu>
 {
     public GameObject menu;
 
-    private static CreditsMenuState instance;
+    private static CreditsMenuState INSTANCE;
 
     private CreditsMenuState()
     {
-        if (instance != null) return;
-        else instance = this;
+        if (INSTANCE != null) return;
+        else INSTANCE = this;
     }
 
     public static CreditsMenuState Instance
     {
         get
         {
-            if (instance == null) new CreditsMenuState();
-            return instance;
+            if (INSTANCE == null) new CreditsMenuState();
+            return INSTANCE;
         }
     }
 

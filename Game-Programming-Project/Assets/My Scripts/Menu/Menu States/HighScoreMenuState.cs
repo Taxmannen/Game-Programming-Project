@@ -4,20 +4,20 @@ public class HighScoreMenuState : State<Menu>
 {
     public GameObject menu;
 
-    private static HighScoreMenuState instance;
+    private static HighScoreMenuState INSTANCE;
 
     private HighScoreMenuState()
     {
-        if (instance != null) return;
-        else instance = this;
+        if (INSTANCE != null) return;
+        else INSTANCE = this;
     }
 
     public static HighScoreMenuState Instance
     {
         get
         {
-            if (instance == null) new HighScoreMenuState();
-            return instance;
+            if (INSTANCE == null) new HighScoreMenuState();
+            return INSTANCE;
         }
     }
 

@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         float timer = 0;
         rb.velocity = Vector2.zero;
         anim.SetBool("IsHit", true);
-        AudioManager.Instance.Play("Hit", pitch: 1f);
+        AudioManager.INSTANCE.Play("Hit", pitch: 1f);
         unableToMove = true;
         while (timer < hitTime)
         {

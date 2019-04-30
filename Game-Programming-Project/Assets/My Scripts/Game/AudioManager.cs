@@ -4,8 +4,8 @@ public class AudioManager : MonoBehaviour
 {
     private void Awake()
     {
-        if (Instance != null) return;
-        else Instance = this;
+        if (INSTANCE != null) return;
+        else INSTANCE = this;
     }
 
     public void Play(string name, float volume = 1, float pitch = 1)
@@ -22,5 +22,5 @@ public class AudioManager : MonoBehaviour
         Destroy(audioSource, audioClip.length * 2); 
     }
 
-    public static AudioManager Instance { get; private set; }
+    public static AudioManager INSTANCE { get; private set; }
 }

@@ -8,11 +8,13 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Sprite empty;
     [SerializeField] private GameObject testItem;
 
+    private PlayerStats ps;
     private GameObject item;
 
     private void Start()
     {
         if (testItem != null) AddItem(testItem);
+        ps = GetComponent<PlayerStats>();
     }
 
     private void Update()
@@ -33,10 +35,19 @@ public class PlayerInventory : MonoBehaviour
     {
         if (item != null)
         {
-            GameObject newItem = Instantiate(item, transform.position, Quaternion.identity);
-            newItem.GetComponent<Item>().SetPlayers(transform, GetComponent<PlayerStats>().OtherPlayer);
-            image.sprite = empty;
-            item = null;
+            //Säkrar så en spelare inte kan teleportera sig bakåt
+            if (item.name.Contains("Teleport") && ps.DistanceToGoal < ps.OtherPlayersDistanceToGoal)
+            {
+                item = null;
+                AddItem(Resources.Load<GameObject>("Items/Restore Item"));
+            }
+            else
+            {
+                GameObject newItem = Instantiate(item, transform.position, Quaternion.identity);
+                newItem.GetComponent<Item>().SetPlayers(transform, GetComponent<PlayerStats>().OtherPlayer);
+                image.sprite = empty;
+                item = null;
+            }
         }
     }
 }
