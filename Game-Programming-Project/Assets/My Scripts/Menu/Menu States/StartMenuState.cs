@@ -6,7 +6,7 @@ public class StartMenuState : State<Menu>
 {
     public GameObject menu;
 
-    private static StartMenuState instance;
+    private static StartMenuState INSTANCE;
 
     private EventSystem eventSystem;
     private GameObject lastSelectedButton;
@@ -16,16 +16,16 @@ public class StartMenuState : State<Menu>
 
     private StartMenuState()
     {
-        if (instance != null) return;
-        else instance = this;
+        if (INSTANCE != null) return;
+        else INSTANCE = this;
     }
 
     public static StartMenuState Instance
     {
         get
         {
-            if (instance == null) new StartMenuState();
-            return instance;
+            if (INSTANCE == null) new StartMenuState();
+            return INSTANCE;
         }
     }
 

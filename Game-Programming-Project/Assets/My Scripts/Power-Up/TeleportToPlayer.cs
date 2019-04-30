@@ -24,7 +24,7 @@ public class TeleportToPlayer : Item
 
     private IEnumerator Teleport()
     {
-        AudioManager.Instance.Play("Teleport", pitch: 1.1f);
+        AudioManager.INSTANCE.Play("Teleport", pitch: 1.1f);
         pc.SetUnableToMove(true);
         StartCoroutine(LerpAndChangeShader(0.25f, edgeSpeed, "_Edges"));
 
@@ -35,7 +35,7 @@ public class TeleportToPlayer : Item
         yield return new WaitForSeconds(dissolveSpeed);
 
         player.position = otherPlayer.position;
-        AudioManager.Instance.Play("Teleport", pitch: 1.1f);
+        AudioManager.INSTANCE.Play("Teleport", pitch: 1.1f);
         StartCoroutine(LerpAndChangeShader(0f, edgeSpeed, "_Edges"));
 
         yield return new WaitForSeconds(edgeSpeed);

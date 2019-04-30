@@ -55,7 +55,7 @@ public class Menu : MonoBehaviour
 
     public void PlaySound()
     {
-        AudioManager.Instance.Play("Button Press");
+        AudioManager.INSTANCE.Play("Button Press");
     }
 
     private void ChangeMenuState(MenuState newEnumState, State<Menu> newState)

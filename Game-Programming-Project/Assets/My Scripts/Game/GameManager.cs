@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
             singleplayerCamera.SetActive(false);
 
             Instantiate(multiplayerCamera).GetComponent<Camera>().SetTargetTransform(player1, player2);
-            
 
             SpriteRenderer sr1 = player1.GetComponent<SpriteRenderer>();
             SpriteRenderer sr2 = player2.GetComponent<SpriteRenderer>();

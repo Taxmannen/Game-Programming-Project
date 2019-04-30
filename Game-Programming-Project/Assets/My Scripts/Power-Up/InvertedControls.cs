@@ -8,7 +8,7 @@ public class InvertedControls : Item
 
     private void Start()
     {
-        AudioManager.Instance.Play("Inverted");    
+        AudioManager.INSTANCE.Play("Inverted");    
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class InvertedControls : Item
     {
         if (otherPlayer != null && other.gameObject.name == otherPlayer.name)
         {
-            AudioManager.Instance.Play("Hit", pitch: 1.2f);
+            AudioManager.INSTANCE.Play("Hit", pitch: 1.2f);
             other.GetComponent<PlayerController>().InvertPlayerControls(true, effectTime);
             base.UseItem();
         }

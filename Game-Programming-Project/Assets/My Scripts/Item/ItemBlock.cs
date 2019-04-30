@@ -60,7 +60,7 @@ public class ItemBlock : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            AudioManager.Instance.Play("Item Box");
+            AudioManager.INSTANCE.Play("Item Box");
             if (itemName.Length == 0)
             {
                 PlayerStats playerStats = other.GetComponent<PlayerStats>();
