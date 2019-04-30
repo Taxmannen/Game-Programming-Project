@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
     private MenuState currentState = MenuState.StartMenu;
 
     private /*public*/ StateMachine<Menu> stateMachine; // { get; set; }
+    private bool applicationStart = true;
 
     private void Start()
     {
@@ -55,7 +56,9 @@ public class Menu : MonoBehaviour
 
     public void PlaySound()
     {
-        if (Time.realtimeSinceStartup > 2f && !AudioManager.INSTANCE.IsPlaying("Button Press")) AudioManager.INSTANCE.Play("Button Press");
+        if (!applicationStart && !AudioManager.INSTANCE.IsPlaying("Button Press"))
+            AudioManager.INSTANCE.Play("Button Press");
+        else applicationStart = false;
     }
 
     private void ChangeMenuState(MenuState newEnumState, State<Menu> newState)
@@ -63,7 +66,7 @@ public class Menu : MonoBehaviour
         if (currentState != newEnumState)
         {
             currentState = newEnumState;
-            stateMachine.ChangeState(newState);
+            stateMachine.ChangeState(newState);   
         }
     }
 }

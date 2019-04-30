@@ -65,7 +65,7 @@ public class PlayerStats : Character
     {
         if (coroutine != null)
         {
-            stunParticles.Stop();
+            //stunParticles.Stop();
             StopCoroutine(coroutine);
             anim.SetBool("IsStunned", false);
             pc.SetUnableToMove(false);
@@ -77,7 +77,7 @@ public class PlayerStats : Character
         anim.SetBool("IsStunned", true);
         pc.SetUnableToMove(true);
         pd.StopDash();
-        stunParticles.Play();
+        //stunParticles.Play();
         yield return new WaitForSeconds(stunTime);
 
         UnstunPlayer();

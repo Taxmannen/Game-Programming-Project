@@ -26,9 +26,9 @@ public class AudioManager : MonoBehaviour
     {
         bool isPlaying = false;
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        foreach(AudioSource source in audioSources)
+        foreach (AudioSource source in audioSources)
         {
-            if (source.name == name && source.isPlaying) isPlaying = true;
+            if (source.clip.name == name && source.isPlaying) isPlaying = true;
         }
         return isPlaying;
     }

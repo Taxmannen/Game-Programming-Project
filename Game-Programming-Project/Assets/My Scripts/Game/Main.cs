@@ -9,6 +9,7 @@ public class Main : MonoBehaviour
     public int frameRate;
     public bool lockedFrameRate;
     public bool deleteHighScores;
+    private bool pause;
 
     private void Start()
     {
@@ -22,6 +23,11 @@ public class Main : MonoBehaviour
     {
         if (Input.GetButtonDown("Restart")) LoadScene(SceneManager.GetActiveScene().name);
         if (Input.GetButtonDown("Menu")) LoadScene("Menu");
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pause = !pause;
+            MyUtils.PauseGame(pause);
+        }
     }
 
     private void LoadScene(string sceneName)

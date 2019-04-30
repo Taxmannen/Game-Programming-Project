@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
                 StopCoroutine(invertedCoroutine);
                 invertedCoroutine = null;
                 inverted = false;
-                invertParticles.Stop();
+                //invertParticles.Stop();
             }
         }
     }
@@ -133,10 +133,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator InvertedCurse(float invertedTime)
     {
         inverted = true;
-        invertParticles.Play();
+        //invertParticles.Play();
         yield return new WaitForSecondsRealtime(invertedTime);
         inverted = false;
-        invertParticles.Stop();
+        //invertParticles.Stop();
         invertedCoroutine = null;
     }
 

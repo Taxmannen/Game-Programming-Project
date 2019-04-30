@@ -384,7 +384,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: -8.796361e+12, y: 1048576.4, z: -1.7014118e+38, w: 2.5243547e-29}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -26199,6 +26199,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6220803340533677032, guid: c0bb1016d45cb8d459130c5acf7e1f6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220803340964133625, guid: c0bb1016d45cb8d459130c5acf7e1f6d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0bb1016d45cb8d459130c5acf7e1f6d, type: 3}
 --- !u!1001 &6703749466997764371
@@ -26406,6 +26416,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957277154183256638, guid: a8edf528de893b04fbe30adf3c819d31,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957277152951347652, guid: a8edf528de893b04fbe30adf3c819d31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8edf528de893b04fbe30adf3c819d31, type: 3}
@@ -26757,6 +26777,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1 UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7759603663017927814, guid: b758e1a231328d24983e5d9465447c0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7759603661950134700, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26927,6 +26952,11 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7759603661950134701, guid: b758e1a231328d24983e5d9465447c0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7759603663017927833, guid: b758e1a231328d24983e5d9465447c0d,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -26936,6 +26966,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759603663017927832, guid: b758e1a231328d24983e5d9465447c0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b758e1a231328d24983e5d9465447c0d, type: 3}
