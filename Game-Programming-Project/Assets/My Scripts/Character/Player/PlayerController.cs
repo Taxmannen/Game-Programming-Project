@@ -29,10 +29,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
 
     private bool hittingWall;
-    private bool inverted;
-    private bool unableToMove;
     private float x;
     private float bonusSpeed = 1;
+
+    public bool UnableToMove { get; private set; }
+
+    public bool Inverted { get; private set; }
+
     #endregion
 
     void Start()
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         x = Input.GetAxis("Horizontal" + " " + gameObject.name) * (grounded ? groundMovementSpeed : airMovementSpeed) * bonusSpeed;
-        if (inverted) x = -x;
+        if (Inverted) x = -x;
        
         grounded = Physics2D.OverlapBox(transform.position - groundOffset, overlapBoxSize, 0, groundLayer);
         anim.SetBool("IsJumping", !grounded);
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!unableToMove) Movement();
+        if (!UnableToMove) Movement();
     }
 
     public void Movement()
@@ -95,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     public void HitPlayer(Vector2 force, float time)
     {
-        if (!unableToMove) StartCoroutine(Hit(force, time));
+        if (!UnableToMove) StartCoroutine(Hit(force, time));
     }
 
     private IEnumerator Hit(Vector2 force, float hitTime)
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
         anim.SetBool("IsHit", true);
         AudioManager.INSTANCE.Play("Hit", pitch: 1f);
-        unableToMove = true;
+        UnableToMove = true;
         while (timer < hitTime)
         {
             rb.velocity = force;
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         anim.SetBool("IsHit", false);
-        unableToMove = false;
+        UnableToMove = false;
     }
 
     public void InvertPlayerControls(bool status, float time = 0)
@@ -124,7 +127,7 @@ public class PlayerController : MonoBehaviour
             {
                 StopCoroutine(invertedCoroutine);
                 invertedCoroutine = null;
-                inverted = false;
+                Inverted = false;
                 //invertParticles.Stop();
             }
         }
@@ -132,10 +135,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator InvertedCurse(float invertedTime)
     {
-        inverted = true;
+        Inverted = true;
         //invertParticles.Play();
         yield return new WaitForSecondsRealtime(invertedTime);
-        inverted = false;
+        Inverted = false;
         //invertParticles.Stop();
         invertedCoroutine = null;
     }
@@ -152,15 +155,13 @@ public class PlayerController : MonoBehaviour
 
     public void SetUnableToMove(bool state)
     {
-        unableToMove = state;
+        UnableToMove = state;
         if (state)
         {
             rb.velocity = Vector2.zero;
             anim.SetFloat("Speed", 0);
         }
     }
-
-    public bool UnableToMove { get { return unableToMove; } }
 
     public bool GetFacingRight() { return facingRight; }
 }
