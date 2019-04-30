@@ -384,7 +384,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 131092, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -23843,7 +23843,7 @@ GameObject:
   - component: {fileID: 1562595603}
   - component: {fileID: 1562595607}
   m_Layer: 5
-  m_Name: UI Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25959,6 +25959,12 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 731847193}
+    - target: {fileID: 1211703787711418563, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
+        type: 3}
+      propertyPath: testItem
+      value: 
+      objectReference: {fileID: 5716174295075545735, guid: ea4914908c72ae1418272cf15972ed3b,
+        type: 3}
     - target: {fileID: 3066087814259596999, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
         type: 3}
       propertyPath: jumpPower
@@ -25968,6 +25974,16 @@ PrefabInstance:
         type: 3}
       propertyPath: slideSpeed
       value: 17.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711186378560667751, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811995376952496296, guid: 8b4095d7a7637b443aecc95e3e9d66d8,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Heal Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b4095d7a7637b443aecc95e3e9d66d8, type: 3}
@@ -26058,20 +26074,6 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 607614032}
-    - target: {fileID: 598186921, guid: 05608585699245a45b789bb859d58163, type: 3}
-      propertyPath: testItem
-      value: 
-      objectReference: {fileID: 3111526616458389446, guid: 00111869e8d54574a8c3428202fd4f7e,
-        type: 3}
-    - target: {fileID: 7744647938130040443, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: jumpPower
-      value: 9.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 598186912, guid: 05608585699245a45b789bb859d58163, type: 3}
-      propertyPath: slideSpeed
-      value: 17.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05608585699245a45b789bb859d58163, type: 3}
 --- !u!4 &6217553721583430095 stripped

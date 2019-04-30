@@ -22,5 +22,16 @@ public class AudioManager : MonoBehaviour
         Destroy(audioSource, audioClip.length * 2); 
     }
 
+    public bool IsPlaying(string name)
+    {
+        bool isPlaying = false;
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        foreach(AudioSource source in audioSources)
+        {
+            if (source.name == name && source.isPlaying) isPlaying = true;
+        }
+        return isPlaying;
+    }
+
     public static AudioManager INSTANCE { get; private set; }
 }

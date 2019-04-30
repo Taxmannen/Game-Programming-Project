@@ -14,7 +14,7 @@ public class RestorePlayer : Item
         //Fy skam på dig Daniel :P
         foreach(ParticleSystem particle in player.GetComponentsInChildren<ParticleSystem>())
         {
-            if (particle.gameObject.name.Contains("Healing")) ps = particle;
+            if (particle.gameObject.name.Contains("Heal")) ps = particle;
         }
         ps.Play();
         playerStats.Restore(effectTime);

@@ -8,7 +8,7 @@ public class StunPlayer : Item
 
     private void Start()
     {
-        AudioManager.INSTANCE.Play("Stun");        
+        AudioManager.INSTANCE.Play("Stun");    
     }
 
     private void Update()

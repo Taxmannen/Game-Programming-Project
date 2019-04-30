@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
 
             SpriteRenderer sr1 = player1.GetComponent<SpriteRenderer>();
             SpriteRenderer sr2 = player2.GetComponent<SpriteRenderer>();
-            sr1.color = new Color32(255, 165, 165, 255);
-            sr2.color = new Color32(165, 255, 165, 255);
+            sr1.material.SetColor("_MainColor", new Color32(255, 165, 165, 255));
+            sr2.material.SetColor("_MainColor", new Color32(165, 255, 165, 255));
             sr1.sortingOrder = 20;
             sr2.sortingOrder = 25;  
         }

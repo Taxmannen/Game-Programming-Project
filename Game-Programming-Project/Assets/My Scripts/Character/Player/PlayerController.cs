@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Vector3 groundOffset;
     [SerializeField] private Transform raycastFrom;
+    [SerializeField] private ParticleSystem invertParticles;
 
     [HideInInspector]
     public bool grounded;
@@ -124,6 +125,7 @@ public class PlayerController : MonoBehaviour
                 StopCoroutine(invertedCoroutine);
                 invertedCoroutine = null;
                 inverted = false;
+                invertParticles.Stop();
             }
         }
     }
@@ -131,8 +133,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator InvertedCurse(float invertedTime)
     {
         inverted = true;
+        invertParticles.Play();
         yield return new WaitForSecondsRealtime(invertedTime);
         inverted = false;
+        invertParticles.Stop();
         invertedCoroutine = null;
     }
 

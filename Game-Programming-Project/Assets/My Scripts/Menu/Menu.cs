@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
-        stateMachine.Update();
+        if (stateMachine != null) stateMachine.Update();
     }
 
     public void PlayGame()
@@ -55,7 +55,7 @@ public class Menu : MonoBehaviour
 
     public void PlaySound()
     {
-        AudioManager.INSTANCE.Play("Button Press");
+        if (Time.realtimeSinceStartup > 2f && !AudioManager.INSTANCE.IsPlaying("Button Press")) AudioManager.INSTANCE.Play("Button Press");
     }
 
     private void ChangeMenuState(MenuState newEnumState, State<Menu> newState)

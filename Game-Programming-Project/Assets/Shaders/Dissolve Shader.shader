@@ -4,8 +4,12 @@ Shader "Custom/Dissolve"
 {
 	Properties
 	{
+		[Header(Sprite)]
 		_MainTex ("Texture", 2D) = "white" {}
-		_NoiseTex ("Texture", 2D) = "white" {}
+		_MainColor ("Main Color", Color) = (1.0, 1.0, 1.0, 1.0)
+		
+		[Header(Dissolve)]
+		_NoiseTex ("Noise Texture", 2D) = "white" {}
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 		_EdgeColour1 ("Edge colour 1", Color) = (1.0, 1.0, 1.0, 1.0)
 		_EdgeColour2 ("Edge colour 2", Color) = (1.0, 1.0, 1.0, 1.0)
@@ -48,6 +52,7 @@ Shader "Custom/Dissolve"
 
 			sampler2D _MainTex;
 			sampler2D _NoiseTex;
+			float4 _MainColor;
 			float4 _EdgeColour1;
 			float4 _EdgeColour2;
 			float _Level;
@@ -75,8 +80,9 @@ Shader "Custom/Dissolve"
 				if (cutout < _Level)
 					discard;
 
-				if(cutout < col.a && cutout < _Level + _Edges)
+				if (cutout < col.a && cutout < _Level + _Edges)
 					col =lerp(_EdgeColour1, _EdgeColour2, (cutout-_Level)/_Edges );
+				else col = _MainColor * col;
 
 				return col;
 			}

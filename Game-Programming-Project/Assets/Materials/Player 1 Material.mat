@@ -103,4 +103,5 @@ Material:
     - _EdgeColour1: {r: 0.8207547, g: 0, b: 0.0476829, a: 1}
     - _EdgeColour2: {r: 0.9245283, g: 0.8561211, b: 0.039248828, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColour: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}

@@ -8,6 +8,7 @@ public class PlayerStats : Character
     [SerializeField] private Transform otherPlayer;
     [SerializeField] private Transform goal;
     [SerializeField] private ParticleSystem powerParticles;
+    [SerializeField] private ParticleSystem stunParticles;
 
     private PlayerController pc;
     private PlayerJump pj;
@@ -64,6 +65,7 @@ public class PlayerStats : Character
     {
         if (coroutine != null)
         {
+            stunParticles.Stop();
             StopCoroutine(coroutine);
             anim.SetBool("IsStunned", false);
             pc.SetUnableToMove(false);
@@ -75,7 +77,7 @@ public class PlayerStats : Character
         anim.SetBool("IsStunned", true);
         pc.SetUnableToMove(true);
         pd.StopDash();
-
+        stunParticles.Play();
         yield return new WaitForSeconds(stunTime);
 
         UnstunPlayer();
