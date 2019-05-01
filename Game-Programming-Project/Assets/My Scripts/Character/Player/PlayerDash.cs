@@ -19,6 +19,7 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerController pc;
     private Coroutine coroutine;
+    private BoxCollider2D col;
 
     private float previousActionTime;
     private float lastDirection;
@@ -33,6 +34,12 @@ public class PlayerDash : MonoBehaviour
 
         if (pc.GetFacingRight()) lastDirection = 1;
         else                     lastDirection = -1;
+
+        BoxCollider2D[] cols = GetComponents<BoxCollider2D>();
+        foreach (BoxCollider2D c in cols)
+        {
+            if (c.isTrigger) col = c;
+        }
     }
 
     private void Update()
@@ -60,6 +67,7 @@ public class PlayerDash : MonoBehaviour
         anim.SetBool("IsSliding", false);
         anim.SetBool("IsDashing", false);
         previousActionTime = Time.time;
+        col.enabled = false;
         coroutine = null;
     }
 
@@ -68,7 +76,7 @@ public class PlayerDash : MonoBehaviour
         float pitch = animation == "IsSliding" ? 0.8f : 1;
         AudioManager.INSTANCE.Play("Dash", 0.75f, pitch);
         anim.SetBool(animation, true);
-
+        if (animation == "IsSliding") col.enabled = true;
         float timer = 0;
         while (timer < actionTime)
         {

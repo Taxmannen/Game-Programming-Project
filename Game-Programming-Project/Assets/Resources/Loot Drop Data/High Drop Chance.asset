@@ -17,7 +17,5 @@ MonoBehaviour:
     dropChance: 75
   - item: Stun Item
     dropChance: 25
-  - item: Restore Item
-    dropChance: 25
   - item: Inverted Item
     dropChance: 25

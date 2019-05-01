@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InvertedControls : Item
+public class InvertedControls : Powerup
 {
     [SerializeField] private float effectTime = 3;
 
@@ -21,7 +21,7 @@ public class InvertedControls : Item
         if (otherPlayer != null && other.gameObject.name == otherPlayer.name)
         {
             AudioManager.INSTANCE.Play("Hit", pitch: 1.2f);
-            other.GetComponent<PlayerController>().InvertPlayerControls(true, effectTime);
+            other.GetComponent<PlayerStats>().InvertPlayer(effectTime);
             base.UseItem();
         }
     }

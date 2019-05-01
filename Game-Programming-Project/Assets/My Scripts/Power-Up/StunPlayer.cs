@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class StunPlayer : Item
+public class StunPlayer : Powerup
 {
     [SerializeField] private float stunLength = 3;
 

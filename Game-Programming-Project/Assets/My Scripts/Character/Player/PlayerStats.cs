@@ -7,14 +7,20 @@ public class PlayerStats : Character
     [Header("Setup")]
     [SerializeField] private Transform otherPlayer;
     [SerializeField] private Transform goal;
-    [SerializeField] private ParticleSystem powerParticles;
-    [SerializeField] private ParticleSystem stunParticles;
+
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem powerParticle;
+    [SerializeField] private ParticleSystem restoreParticle;
+    [SerializeField] private ParticleSystem stunParticle;
+    [SerializeField] private ParticleSystem invertedParticle;
 
     private PlayerController pc;
     private PlayerJump pj;
     private PlayerDash pd;
     private Animator anim;
-    private Coroutine coroutine;
+    private Coroutine restoreCoroutine;
+    private Coroutine stunCoroutine;
+    private Coroutine invertedCoroutine;
 
     private bool activated;
     private float distanceToStartLoserReward = 7.5f; // 15?
@@ -44,29 +50,36 @@ public class PlayerStats : Character
 
     public void Restore(float time)
     {
-        StartCoroutine(Restoring(time));
+        if (restoreCoroutine != null) StopCoroutine(restoreCoroutine);
+        restoreCoroutine = StartCoroutine(Restoring(time));
     }
 
     private IEnumerator Restoring(float time)
     {
+        restoreParticle.Play();
         UnstunPlayer();
-        pc.InvertPlayerControls(false);
+        UninvertPlayer();
         restoring = true;
         yield return new WaitForSecondsRealtime(time);
+        restoreParticle.Stop();
         restoring = false;
     }
 
     public void StunPlayer(float stunTime)
     {
-        if (!restoring) coroutine = StartCoroutine(Stun(stunTime));
+        if (!restoring)
+        {
+            if (stunCoroutine != null) StopCoroutine(stunCoroutine);
+            stunCoroutine = StartCoroutine(Stun(stunTime));
+        }
     }
 
-    public void UnstunPlayer()
+    private void UnstunPlayer()
     {
-        if (coroutine != null)
+        if (stunCoroutine != null)
         {
             //stunParticles.Stop();
-            StopCoroutine(coroutine);
+            StopCoroutine(stunCoroutine);
             anim.SetBool("IsStunned", false);
             pc.SetUnableToMove(false);
         }
@@ -81,6 +94,35 @@ public class PlayerStats : Character
         yield return new WaitForSeconds(stunTime);
 
         UnstunPlayer();
+    }
+
+    public void InvertPlayer(float invertTime)
+    {
+        if (!restoring)
+        {
+            if (invertedCoroutine != null) StopCoroutine(invertedCoroutine);
+            invertedCoroutine = StartCoroutine(Invert(invertTime));
+        }
+    }
+
+    private void UninvertPlayer()
+    {
+        if (invertedCoroutine != null)
+        {
+            StopCoroutine(invertedCoroutine);
+            pc.SetInvert(false);
+            //invertParticles.Stop();
+        }
+    }
+
+    private IEnumerator Invert(float invertTime)
+    {
+        pc.SetInvert(true);
+        //invertParticles.Play();
+
+        yield return new WaitForSecondsRealtime(invertTime);
+
+        UninvertPlayer();
     }
 
     private void SetDistances()
@@ -104,7 +146,7 @@ public class PlayerStats : Character
 
     private void ActivateLoserPowerup()
     {
-        powerParticles.Play();
+        powerParticle.Play();
         pc.SetBonusSpeed(1.25f);
         pj.SetBonusJumpPower(1.25f);
         activated = true;
@@ -112,7 +154,7 @@ public class PlayerStats : Character
 
     private void DeactiveLoserPowerUp()
     {
-        powerParticles.Stop();
+        powerParticle.Stop();
         pc.SetBonusSpeed(1);
         pj.SetBonusJumpPower(1);
         activated = false;

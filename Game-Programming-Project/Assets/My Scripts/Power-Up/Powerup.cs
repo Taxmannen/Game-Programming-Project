@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Powerup : MonoBehaviour
 {
     public Sprite sprite;
 

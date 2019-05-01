@@ -15,22 +15,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Vector3 groundOffset;
     [SerializeField] private Transform raycastFrom;
-    [SerializeField] private ParticleSystem invertParticles;
 
-    [HideInInspector]
-    public bool grounded;
+    [HideInInspector] public bool grounded;
 
     private Rigidbody2D rb;
     private Animator anim;
     private PlayerStats ps;
 
-    private Coroutine invertedCoroutine;
     private Vector3 velocity = Vector3.zero;
     private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
 
     private bool hittingWall;
-    private float x;
     private float bonusSpeed = 1;
+    private float x;
 
     public bool UnableToMove { get; private set; }
 
@@ -118,29 +115,9 @@ public class PlayerController : MonoBehaviour
         UnableToMove = false;
     }
 
-    public void InvertPlayerControls(bool status, float time = 0)
+    private void OnDrawGizmos()
     {
-        if (status && !ps.restoring) invertedCoroutine = StartCoroutine(InvertedCurse(time));
-        else
-        {
-            if (invertedCoroutine != null)
-            {
-                StopCoroutine(invertedCoroutine);
-                invertedCoroutine = null;
-                Inverted = false;
-                //invertParticles.Stop();
-            }
-        }
-    }
-
-    private IEnumerator InvertedCurse(float invertedTime)
-    {
-        Inverted = true;
-        //invertParticles.Play();
-        yield return new WaitForSecondsRealtime(invertedTime);
-        Inverted = false;
-        //invertParticles.Stop();
-        invertedCoroutine = null;
+        Gizmos.DrawCube(transform.position - groundOffset, overlapBoxSize);
     }
 
     public void SetBonusSpeed(float newBonusSpeed)
@@ -148,9 +125,9 @@ public class PlayerController : MonoBehaviour
         bonusSpeed = newBonusSpeed;
     }
 
-    private void OnDrawGizmos()
+    public void SetInvert(bool state)
     {
-        Gizmos.DrawCube(transform.position - groundOffset, overlapBoxSize);
+        Inverted = state;
     }
 
     public void SetUnableToMove(bool state)

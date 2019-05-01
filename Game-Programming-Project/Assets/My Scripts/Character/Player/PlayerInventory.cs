@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour
         if (item == null)
         {
             item = newItem;
-            image.sprite = item.GetComponent<Item>().sprite;
+            image.sprite = item.GetComponent<Powerup>().sprite;
         }
     }
 
@@ -44,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
             else
             {
                 GameObject newItem = Instantiate(item, transform.position, Quaternion.identity);
-                newItem.GetComponent<Item>().SetPlayers(transform, GetComponent<PlayerStats>().OtherPlayer);
+                newItem.GetComponent<Powerup>().SetPlayers(transform, GetComponent<PlayerStats>().OtherPlayer);
                 image.sprite = empty;
                 item = null;
             }

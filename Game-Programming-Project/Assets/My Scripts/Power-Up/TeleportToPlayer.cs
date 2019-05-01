@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class TeleportToPlayer : Item
+public class TeleportToPlayer : Powerup
 {
     public float dissolveSpeed = 0.5f;
     public float edgeSpeed = 0.2f;

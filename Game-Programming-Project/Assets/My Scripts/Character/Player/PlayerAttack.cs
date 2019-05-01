@@ -17,19 +17,25 @@ public class PlayerAttack : MonoBehaviour
     private PlayerController pc;
     private Coroutine coroutine;
 
-    private float attackDelay;
+    //private float attackDelay;
+
     #endregion
 
     private void Start()
     {
-        anim = transform.parent.GetComponent<Animator>();
-        pc = transform.parent.GetComponent<PlayerController>();
-        col = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
+        pc = GetComponent<PlayerController>();
+
+        BoxCollider2D[] cols = GetComponents<BoxCollider2D>();
+        foreach(BoxCollider2D c in cols)
+        {
+            if (c.isTrigger) col = c;
+        }
     }
 
     private void Update()
     {
-        if (!pc.UnableToMove && Input.GetButtonDown("Attack" + " " + transform.parent.name))
+        if (!pc.UnableToMove && Input.GetButtonDown("Attack" + " " + transform.name))
         {
             if (coroutine == null && pc.grounded) coroutine = StartCoroutine(Attack());
         }
@@ -37,19 +43,18 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && Time.time - attackDelay > 0.2f)
+        if (other.tag == "Player" && !other.isTrigger /*&& Time.time - attackDelay > 0f*/)
         {
             PlayerController otherPc = other.GetComponent<PlayerController>();
             Vector2 force = pc.GetFacingRight() ? attackForce : new Vector2(-attackForce.x, attackForce.y);
             otherPc.HitPlayer(force, attackTime);
-            attackDelay = Time.time;
+            //attackDelay = Time.time;
         }
     }
 
     private IEnumerator Attack()
     {
         anim.SetBool("IsAttacking", true);
-
         yield return new WaitForSeconds(startDelay);
         col.enabled = true;
         anim.SetBool("IsAttacking", false);
