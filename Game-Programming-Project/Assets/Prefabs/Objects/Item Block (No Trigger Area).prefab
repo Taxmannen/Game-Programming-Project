@@ -162,4 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSpawn: 5
-  debugMode: 1
+  respawnable: 0
+  respawnTime: 0
+  debugMode: 0
+  itemName: 

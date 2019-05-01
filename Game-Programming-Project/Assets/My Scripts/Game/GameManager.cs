@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 
+public enum GameMode { Game, Tutorial }
+
 public class GameManager : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] private bool runThis;
+
+    [Header("Mode")]
+    [SerializeField] private GameMode gameMode;
 
     [Header("Setup")]
     [SerializeField] private Transform player1;
@@ -25,13 +30,16 @@ public class GameManager : MonoBehaviour
             CameraManager cm = Instantiate(multiplayerCamera).GetComponent<CameraManager>();
             cm.SetTargetTransform(player1, player2);
 
-            //Marker Setup
-            GameObject marker1 = Instantiate(playerMarker);
-            GameObject marker2 = Instantiate(playerMarker);
-            marker1.layer = LayerMask.NameToLayer("Player 1 Camera");
-            marker2.layer = LayerMask.NameToLayer("Player 2 Camera");
-            marker1.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(1), player2);
-            marker2.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(2), player1);
+            if (gameMode == GameMode.Game)
+            {
+                //Marker Setup
+                GameObject marker1 = Instantiate(playerMarker);
+                GameObject marker2 = Instantiate(playerMarker);
+                marker1.layer = LayerMask.NameToLayer("Player 1 Camera");
+                marker2.layer = LayerMask.NameToLayer("Player 2 Camera");
+                marker1.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(1), player2);
+                marker2.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(2), player1);
+            }
 
             //Player Setup
             SpriteRenderer sr1 = player1.GetComponent<SpriteRenderer>();
