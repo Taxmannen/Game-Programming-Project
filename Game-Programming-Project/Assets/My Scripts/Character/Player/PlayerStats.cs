@@ -78,7 +78,8 @@ public class PlayerStats : Character
     {
         if (stunCoroutine != null)
         {
-            //stunParticles.Stop();
+            stunParticle.gameObject.SetActive(false);
+            stunParticle.gameObject.SetActive(true);
             StopCoroutine(stunCoroutine);
             anim.SetBool("IsStunned", false);
             pc.SetUnableToMove(false);
@@ -90,7 +91,7 @@ public class PlayerStats : Character
         anim.SetBool("IsStunned", true);
         pc.SetUnableToMove(true);
         pd.StopDash();
-        //stunParticles.Play();
+        stunParticle.Play();
         yield return new WaitForSeconds(stunTime);
 
         UnstunPlayer();
@@ -109,16 +110,16 @@ public class PlayerStats : Character
     {
         if (invertedCoroutine != null)
         {
+            invertedParticle.Stop();
             StopCoroutine(invertedCoroutine);
             pc.SetInvert(false);
-            //invertParticles.Stop();
         }
     }
 
     private IEnumerator Invert(float invertTime)
     {
         pc.SetInvert(true);
-        //invertParticles.Play();
+        invertedParticle.Play();
 
         yield return new WaitForSecondsRealtime(invertTime);
 

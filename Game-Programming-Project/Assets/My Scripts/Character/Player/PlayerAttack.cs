@@ -7,11 +7,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackTime;
     [SerializeField] private Vector2 attackForce;
 
-    [Header("Animation")]
-    [SerializeField] private float startDelay;
-    [SerializeField] private float endDelay;
-
-    private Collider2D col;
     private PlayerController pc;
     private Coroutine coroutine;
     #endregion

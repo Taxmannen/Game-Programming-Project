@@ -21327,7 +21327,7 @@ PrefabInstance:
     - target: {fileID: 6356778703734315551, guid: 6bc76c46a3f429c4bb3a669bc9b62264,
         type: 3}
       propertyPath: itemName
-      value: Teleport
+      value: Inverted
       objectReference: {fileID: 0}
     - target: {fileID: 6356778703734315551, guid: 6bc76c46a3f429c4bb3a669bc9b62264,
         type: 3}
@@ -23902,7 +23902,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.5, y: 4}
+  m_Offset: {x: 3.5, y: 4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -24621,7 +24621,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4.5, y: 4}
+  m_Offset: {x: -3.5, y: 4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25594,16 +25594,6 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 607614032}
-    - target: {fileID: 7744647938130040443, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: jumpPower
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988639544938396927, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: attackForce.y
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05608585699245a45b789bb859d58163, type: 3}
 --- !u!1001 &6703749466997764371
@@ -25687,6 +25677,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main
       objectReference: {fileID: 0}
+    - target: {fileID: 7418024892723716347, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -2.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418024892723716347, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.73e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418024892723716347, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418024892723716347, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.7e-43
+      objectReference: {fileID: 0}
     - target: {fileID: 7418024891547005362, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25757,6 +25767,26 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 598186916}
+    - target: {fileID: 904306328808796860, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0493612
+      objectReference: {fileID: 0}
+    - target: {fileID: 904306328808796860, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 904306328607048641, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 904306328607048641, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7418024891547005373, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
         type: 3}
       propertyPath: deleteHighScores

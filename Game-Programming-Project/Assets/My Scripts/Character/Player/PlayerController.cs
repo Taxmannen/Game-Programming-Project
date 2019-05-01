@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStats ps;
 
     private Vector3 velocity = Vector3.zero;
-    private Vector3 overlapBoxSize = new Vector3(0.55f, 0.1f, 0);
+    private Vector3 overlapBoxSize = new Vector3(0.6f, 0.1f, 0);
 
     private bool hittingWall;
     private float bonusSpeed = 1;

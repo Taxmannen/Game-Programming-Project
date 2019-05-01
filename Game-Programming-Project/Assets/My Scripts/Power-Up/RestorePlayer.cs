@@ -1,8 +1,10 @@
-﻿public class RestorePlayer : Powerup
-{
-    private PlayerStats ps;
+﻿using UnityEngine;
 
-    private float effectTime = 5;
+public class RestorePlayer : Powerup
+{
+    [SerializeField] private float effectTime = 5;
+
+    private PlayerStats ps;
 
     private void Start()
     {
