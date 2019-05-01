@@ -53,7 +53,7 @@ public class PlayerJump : MonoBehaviour
                 if (!doubleJump) doubleJump = true;
                 if (Mathf.Abs(startFallPosY - transform.position.y) > fallBeforeStunned)
                 {
-                    Debug.Log("FallLength:" + " " + Mathf.Abs(startFallPosY - transform.position.y));
+                    //Debug.Log("FallLength:" + " " + Mathf.Abs(startFallPosY - transform.position.y));
                     ps.StunPlayer(1);
                 }
                 startFallPosY = 0;

@@ -24947,6 +24947,11 @@ PrefabInstance:
       propertyPath: delayBetweenSwitch
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8133510924940559290, guid: 25ac81354d686a14aae3db72b93f76b8,
+        type: 3}
+      propertyPath: stunTime
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25ac81354d686a14aae3db72b93f76b8, type: 3}
 --- !u!1 &1978767710
@@ -25589,40 +25594,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 607614032}
-    - target: {fileID: 2924748651100961024, guid: 05608585699245a45b789bb859d58163,
+    - target: {fileID: 7744647938130040443, guid: 05608585699245a45b789bb859d58163,
         type: 3}
-      propertyPath: m_Offset.x
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924748651100961024, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924748651100961024, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924748651100961024, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988639544938396927, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: attackForce.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988639544938396927, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: attackTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988639544938396927, guid: 05608585699245a45b789bb859d58163,
-        type: 3}
-      propertyPath: attackForce.y
-      value: 2.5
+      propertyPath: jumpPower
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05608585699245a45b789bb859d58163, type: 3}
@@ -25865,6 +25840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: drawGizmos
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133510924940559290, guid: 25ac81354d686a14aae3db72b93f76b8,
+        type: 3}
+      propertyPath: stunTime
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25ac81354d686a14aae3db72b93f76b8, type: 3}
