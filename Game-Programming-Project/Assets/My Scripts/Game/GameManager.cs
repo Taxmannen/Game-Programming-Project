@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
                 GameObject marker2 = Instantiate(playerMarker);
                 marker1.layer = LayerMask.NameToLayer("Player 1 Camera");
                 marker2.layer = LayerMask.NameToLayer("Player 2 Camera");
-                marker1.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(1), player2);
-                marker2.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(2), player1);
+                marker1.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(1), player1, player2);
+                marker2.GetComponent<Marker>().SetCameraAndPlayer(cm.GetCamera(2), player2, player1);
             }
 
             //Player Setup

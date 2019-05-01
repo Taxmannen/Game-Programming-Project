@@ -4,10 +4,12 @@ public class Marker : MonoBehaviour
 {
     private Camera cam;
     private Transform player;
+    private Transform otherPlayer;
     private Vector2 bounds;
 
     SpriteRenderer sr;
     Vector3 pos;
+    float diff = 0f;
 
     private void Start()
     {
@@ -17,12 +19,20 @@ public class Marker : MonoBehaviour
 
     private void FixedUpdate()
     {
-        pos = cam.WorldToViewportPoint(player.position);
+        pos = cam.WorldToViewportPoint(otherPlayer.position);
         BoundsCheck();
 
-        pos.x = Mathf.Clamp(pos.x, bounds.x, 1f - bounds.x);
-        pos.y = Mathf.Clamp(pos.y, bounds.y, 1f - bounds.y);
+        pos.x = Mathf.Clamp(pos.x, bounds.x + diff, (1 - diff) - bounds.x);
+        pos.y = Mathf.Clamp(pos.y, bounds.y + diff, (1 - diff) - bounds.y);
         transform.position = cam.ViewportToWorldPoint(pos);
+
+  
+    }
+    private void Update()
+    {
+        var dir = otherPlayer.position - player.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void BoundsCheck()
@@ -37,9 +47,10 @@ public class Marker : MonoBehaviour
         }
     }
 
-    public void SetCameraAndPlayer(Camera cam, Transform player)
+    public void SetCameraAndPlayer(Camera cam, Transform player, Transform otherPlayer)
     {
         this.cam = cam;
         this.player = player;
+        this.otherPlayer = otherPlayer;
     }
 }

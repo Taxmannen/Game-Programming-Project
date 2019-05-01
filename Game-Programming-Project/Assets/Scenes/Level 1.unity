@@ -21327,7 +21327,7 @@ PrefabInstance:
     - target: {fileID: 6356778703734315551, guid: 6bc76c46a3f429c4bb3a669bc9b62264,
         type: 3}
       propertyPath: itemName
-      value: Inverted
+      value: Teleport
       objectReference: {fileID: 0}
     - target: {fileID: 6356778703734315551, guid: 6bc76c46a3f429c4bb3a669bc9b62264,
         type: 3}
@@ -25599,6 +25599,11 @@ PrefabInstance:
       propertyPath: jumpPower
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5988639544938396927, guid: 05608585699245a45b789bb859d58163,
+        type: 3}
+      propertyPath: attackForce.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05608585699245a45b789bb859d58163, type: 3}
 --- !u!1001 &6703749466997764371
@@ -25752,6 +25757,16 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 598186916}
+    - target: {fileID: 7418024891547005373, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: deleteHighScores
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418024892787324131, guid: 6dfb2af1efa6d8f4c83a3f4461002a40,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.6862745
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dfb2af1efa6d8f4c83a3f4461002a40, type: 3}
 --- !u!1001 &8133510925182905168
