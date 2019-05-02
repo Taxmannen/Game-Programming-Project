@@ -599,11 +599,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1119069747201281177}
     m_Modifications:
-    - target: {fileID: 561126391265905290, guid: cc19f1b39e392604b9ab88088f622935,
-        type: 3}
-      propertyPath: m_Name
-      value: Player Inverted Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 561126391265905303, guid: cc19f1b39e392604b9ab88088f622935,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -658,6 +653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 561126391265905290, guid: cc19f1b39e392604b9ab88088f622935,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Inverted Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc19f1b39e392604b9ab88088f622935, type: 3}
@@ -740,6 +740,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 112364154069901671, guid: a1c8ed6784eeeb940b08de86f31dd2c2,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 112364154069901668, guid: a1c8ed6784eeeb940b08de86f31dd2c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c8ed6784eeeb940b08de86f31dd2c2, type: 3}
 --- !u!4 &7943201823371980821 stripped
