@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 2719538761539903162}
   - component: {fileID: 2255617614631723793}
   m_Layer: 0
-  m_Name: Camera Border (1)
+  m_Name: Camera Border Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 6881085367439821559}
   - component: {fileID: 6881085367439821558}
   m_Layer: 0
-  m_Name: Camera Border
+  m_Name: Camera Border Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
