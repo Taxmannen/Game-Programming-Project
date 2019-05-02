@@ -4,25 +4,25 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 21300000
-    second: cavesofgallet_tiles_0
+    second: Wall
   - first:
       213: 21300002
-    second: cavesofgallet_tiles_1
+    second: Wall 2
   - first:
       213: 21300004
-    second: cavesofgallet_tiles_2
+    second: Wall 3
   - first:
       213: 21300006
-    second: cavesofgallet_tiles_3
+    second: Wall 4
   - first:
       213: 21300008
-    second: cavesofgallet_tiles_4
+    second: Wall 5
   - first:
       213: 21300010
-    second: cavesofgallet_tiles_5
+    second: Wall 6
   - first:
       213: 21300012
-    second: cavesofgallet_tiles_6
+    second: Wall 7
   - first:
       213: 21300014
     second: cavesofgallet_tiles_7
@@ -31,7 +31,7 @@ TextureImporter:
     second: Green Wall Top
   - first:
       213: 21300018
-    second: cavesofgallet_tiles_9
+    second: Floor 1
   - first:
       213: 21300020
     second: cavesofgallet_tiles_10
@@ -55,7 +55,7 @@ TextureImporter:
     second: Green Wall Middle
   - first:
       213: 21300034
-    second: cavesofgallet_tiles_17
+    second: Wall - Floor
   - first:
       213: 21300036
     second: cavesofgallet_tiles_18
@@ -79,10 +79,10 @@ TextureImporter:
     second: Green Wall Bottom
   - first:
       213: 21300050
-    second: cavesofgallet_tiles_25
+    second: Buttom Middle
   - first:
       213: 21300052
-    second: cavesofgallet_tiles_26
+    second: Grass
   - first:
       213: 21300054
     second: cavesofgallet_tiles_27
@@ -262,10 +262,10 @@ TextureImporter:
     second: cavesofgallet_tiles_85
   - first:
       213: 21300172
-    second: cavesofgallet_tiles_86
+    second: Hanging Grass 2
   - first:
       213: 21300174
-    second: cavesofgallet_tiles_87
+    second: Hanging Grass
   - first:
       213: 21300176
     second: cavesofgallet_tiles_88
@@ -363,7 +363,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cavesofgallet_tiles_0
+      name: Wall
       rect:
         serializedVersion: 2
         x: 0
@@ -384,7 +384,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_1
+      name: Wall 2
       rect:
         serializedVersion: 2
         x: 8
@@ -405,7 +405,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_2
+      name: Wall 3
       rect:
         serializedVersion: 2
         x: 16
@@ -426,7 +426,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_3
+      name: Wall 4
       rect:
         serializedVersion: 2
         x: 24
@@ -447,7 +447,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_4
+      name: Wall 5
       rect:
         serializedVersion: 2
         x: 32
@@ -468,7 +468,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_5
+      name: Wall 6
       rect:
         serializedVersion: 2
         x: 40
@@ -489,7 +489,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_6
+      name: Wall 7
       rect:
         serializedVersion: 2
         x: 48
@@ -552,7 +552,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_9
+      name: Floor 1
       rect:
         serializedVersion: 2
         x: 8
@@ -720,7 +720,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_17
+      name: Wall - Floor
       rect:
         serializedVersion: 2
         x: 8
@@ -888,7 +888,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_25
+      name: Buttom Middle
       rect:
         serializedVersion: 2
         x: 8
@@ -909,7 +909,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_26
+      name: Grass
       rect:
         serializedVersion: 2
         x: 16
@@ -2169,7 +2169,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_86
+      name: Hanging Grass 2
       rect:
         serializedVersion: 2
         x: 48
@@ -2190,7 +2190,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cavesofgallet_tiles_87
+      name: Hanging Grass
       rect:
         serializedVersion: 2
         x: 56
