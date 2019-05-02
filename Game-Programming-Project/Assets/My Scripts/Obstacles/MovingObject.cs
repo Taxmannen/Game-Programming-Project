@@ -11,10 +11,6 @@ public class MovingObject : MonoBehaviour
     [SerializeField] private Vector3 startPos;
     [SerializeField] private Vector3 endPos;
 
-    [Header("Blade")]
-    [SerializeField] private Transform blade;
-    [SerializeField] private float rotationSpeed;
-
     [Header("Debug")]
     [SerializeField] private bool drawGizmos;
 
@@ -27,7 +23,7 @@ public class MovingObject : MonoBehaviour
         pos = transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float step = speed * Time.deltaTime;
         if (currentDir == Direction.StartingPosition)
@@ -42,13 +38,28 @@ public class MovingObject : MonoBehaviour
             if (Vector3.Distance(transform.position, pos + endPos) < 0.1f)
                 StartCoroutine(ChangeDirection(Direction.StartingPosition, delayBetweenSwitch));
         }
-        if (blade != null) transform.Rotate(new Vector3(0, 0, -(rotationSpeed * Time.deltaTime)));
     }
 
     private IEnumerator ChangeDirection(Direction dir, float delay)
     {
         yield return new WaitForSeconds(delay);
         currentDir = dir;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.transform.SetParent(null);
+        }
     }
 
     private void OnDrawGizmos()

@@ -31,7 +31,7 @@ public class MovingBlock : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player") go = true;
+        if (other.CompareTag("Player")) go = true;
     }
 
     private void OnDrawGizmos()
