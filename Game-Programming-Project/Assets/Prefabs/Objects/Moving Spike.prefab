@@ -181,6 +181,9 @@ MonoBehaviour:
   delayBetweenSwitch: 0.25
   startPos: {x: -9, y: 0, z: 0}
   endPos: {x: 9, y: 0, z: 0}
+  blade: {fileID: 0}
+  rotationSpeed: 0
+  drawGizmos: 0
 --- !u!114 &8133510924940559290
 MonoBehaviour:
   m_ObjectHideFlags: 0
