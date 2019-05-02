@@ -5,6 +5,7 @@ public class MovingBlock : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Vector3 endPos;
     [SerializeField] private Vector2 scale;
+    [SerializeField] private bool drawGizmos;
 
     private Vector3 pos;
     private bool go;
@@ -35,6 +36,6 @@ public class MovingBlock : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position + endPos, scale);
+        if (drawGizmos) Gizmos.DrawCube(transform.position + endPos, scale);
     }
 }
