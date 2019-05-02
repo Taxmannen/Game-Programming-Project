@@ -19,3 +19,5 @@ MonoBehaviour:
     dropChance: 50
   - item: Inverted Item
     dropChance: 50
+  - item: Teleport Item
+    dropChance: 33

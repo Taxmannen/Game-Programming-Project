@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5716174295075545737}
   - component: {fileID: 5716174295075545734}
   m_Layer: 0
-  m_Name: Inverted Controls Item
+  m_Name: Inverted Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b3fa127d0fcbfe04d99f9db8def39b7d, type: 3}
+  effectTime: 4
 --- !u!1001 &8122648256285955539
 PrefabInstance:
   m_ObjectHideFlags: 0

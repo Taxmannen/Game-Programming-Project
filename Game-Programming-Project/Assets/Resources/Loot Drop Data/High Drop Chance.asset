@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: Teleport
-    dropChance: 75
+    dropChance: 80
   - item: Stun Item
-    dropChance: 25
+    dropChance: 20
   - item: Inverted Item
-    dropChance: 25
+    dropChance: 20

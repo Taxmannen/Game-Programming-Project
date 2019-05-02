@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 02c017dc611395341a27cb658ebb935f, type: 3}
+  effectTime: 7.5
