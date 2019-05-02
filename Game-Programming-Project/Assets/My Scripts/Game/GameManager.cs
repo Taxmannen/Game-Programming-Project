@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameMode gameMode;
 
     [Header("Setup")]
+    [SerializeField] private Vector2 startPosition = new Vector2(-5, 0.8f);
     [SerializeField] private Transform player1;
     [SerializeField] private Transform player2;
     [SerializeField] private GameObject singleplayerCamera;
@@ -21,8 +22,8 @@ public class GameManager : MonoBehaviour
     {
         if (runThis)
         {
-            player1.position = new Vector3(-5, 0.8f, 0);
-            player2.position = new Vector3(5, 0.8f, 0);
+            player1.position = startPosition;
+            player2.position = new Vector3(-startPosition.x, startPosition.y);
             player2.localScale = new Vector3(-1, 1, 1);
             singleplayerCamera.SetActive(false);
 
