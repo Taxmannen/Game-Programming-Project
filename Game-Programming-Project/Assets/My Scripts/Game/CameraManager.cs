@@ -20,5 +20,4 @@ public class CameraManager : MonoBehaviour
         if (cam == 1) return mainCamera1;
         else          return mainCamera2;
     }
-    
 }
