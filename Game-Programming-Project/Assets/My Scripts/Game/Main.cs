@@ -21,7 +21,7 @@ public class Main : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Restart")) LoadScene(SceneManager.GetActiveScene().name);
+        if (Input.GetButtonDown("Restart") && Time.timeScale > 0) LoadScene(SceneManager.GetActiveScene().name);
         if (Input.GetButtonDown("Menu")) LoadScene("Menu");
         if (Input.GetKeyDown(KeyCode.P))
         {

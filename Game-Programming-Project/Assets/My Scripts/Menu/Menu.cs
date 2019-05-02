@@ -14,6 +14,8 @@ public class Menu : MonoBehaviour
     {
         stateMachine = new StateMachine<Menu>(this);
         stateMachine.ChangeState(StartMenuState.Instance);
+        if (Application.isEditor) Cursor.visible = true;
+        else                      Cursor.visible = false;
     }
 
     private void Update()
